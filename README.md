@@ -1,1 +1,1 @@
-# GIS-So-Se-2020
+# GIS-SoSe-2020
