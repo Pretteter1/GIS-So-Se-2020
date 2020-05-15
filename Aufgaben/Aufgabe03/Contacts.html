@@ -48,21 +48,29 @@
     <!--<div class="Formular">-->
     <h2>Kontakt</h2>
     <br>
-    <p class="Formular_Daten">Vorname</p><br>
-    <p class="Formular_Daten">Nachname</p><br>
-    <p class="Formular_Daten">E-Mail</p><br>
-    <p class="Formular_Nachricht">Nachricht</p>
+    <input class="Formular_Daten" type="text" id="Vname" name="Vname" placeholder="Vorname">
     <br>
+    <br>
+    
+    <input class="Formular_Daten" type="text" id="Nname" name="Nname" placeholder="Nachname">
+    <br>
+    <br>
+    <input class="Formular_Daten" type="email" id="email" name="email" placeholder="E-Mail">
+    <br>
+    <br>
+    <textarea class="Formular_Nachricht" name="Nachricht" id="Nachricht"  placeholder="Nachricht"></textarea>
+        <br>
 
 
     <p id="Copie">Durch das Absenden dieser Nachricht <br> akzeptiere ich den Datenschutz</p>
 
 
-    <p class="senden">Senden</p>
+    <input class="senden" type="button" onclick="alert('Das war ein Fehler!')" value="Senden">
+   
     <br>
     <br>
     <hr>
-    <a href="#Anfang"><u>Zum Seitenanfang</u></a>
+    
 </body>
 
 
