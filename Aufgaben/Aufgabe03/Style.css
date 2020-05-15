@@ -18,7 +18,7 @@ h1 {
     color: red;
     display: inline-block;
     transform: translate(0.3em, 0em) rotate(45deg) scale(1, 1.5);
-    width: 0, 5em;
+    width: 0.6em;
     height: 0em;
     text-shadow: 1px 1px black;
 }
@@ -72,7 +72,7 @@ img, video {
 
 .Formular_Nachricht {
     background-color: lightgrey;
-    width: 500;
+    width: 500px;
     /* border: 5px solid black;*/
     padding: 10px;
     margin: 0px;
