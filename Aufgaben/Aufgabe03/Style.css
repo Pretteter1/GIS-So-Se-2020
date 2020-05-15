@@ -1,32 +1,52 @@
-body   { 
-	 
+body {
     background-image: url("bg.png");
     width: 800px;
     margin-left: auto;
     margin-right: auto;
-	font-family: Arial, Helvetica, sans-serif;
-    
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-img, video{
+h1 {
+    font-size: 5em;
+    line-height: 0.5em;
+    margin: 0.3em 0.3em 1em 0.3em;
+    color: #5c82d9;
+    text-shadow: rgba(0, 0, 0, 0.5) -1px 0, rgba(0, 0, 0, 0.3) 0 -1px, rgba(255, 255, 255, 0.5) 2px 2px, rgba(0, 0, 0, 0.3) -1px -2px;
+}
 
+#uber {
+    color: red;
+    display: inline-block;
+    transform: translate(0.3em, 0em) rotate(45deg) scale(1, 1.5);
+    width: 0, 5em;
+    height: 0em;
+    text-shadow: 1px 1px black;
+}
+
+#Portfolio {
+    text-align: center;
+}
+
+img, video {
+    /* passt Videos + Audio an */
     max-width: 800px;
     height: auto;
 }
 
 #navbar {
+    /* designt die Nav-Bar ohne den Text */
     overflow: auto;
     background-color: rgb(0, 0, 0);
     position: fixed;
-    top: 0;
+    top: 0px;
     width: 270px;
-    right: 25%;
-   
-    
-    margin-top: 30px;
+    right: 15%;
+    opacity: 70%;
+    margin-top: 0px;
 }
 
 #navbar a {
+    /* designt den Text*/
     float: right;
     display: block;
     color: white;
@@ -37,7 +57,54 @@ img, video{
 }
 
 #navbar a:hover {
+    /*lässt die Buttons aufleuchten*/
     background: #ddd;
     color: black;
-  }
- 
+}
+
+.Formular_Daten {
+    background-color: lightgrey;
+    width: 400px;
+    /* border: 5px solid black;*/
+    padding: 10px;
+    margin: 0px;
+}
+
+.Formular_Nachricht {
+    background-color: lightgrey;
+    width: 500;
+    /* border: 5px solid black;*/
+    padding: 10px;
+    margin: 0px;
+    height: 100px;
+}
+
+#Copie {
+    opacity: 50%;
+    font-size: xx-small;
+}
+
+.senden {
+    background-color: lightgrey;
+    width: 57px;
+    padding: 10px;
+    margin: 0px;
+}
+
+.Absatz {
+    color: blue;
+    position: absolute;
+    top: 100px;
+    right: 30%;
+    width: 250px;
+    height: 100px;
+}
+
+.link:hover {
+    background: #FFDB93;
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    transform: scale(1.2);
+    opacity: .5;
+    filter: alpha(opacity=50);
+}
