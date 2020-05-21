@@ -59,12 +59,16 @@ ul {
     color: white;
   }
 
-ul img{
+ul > p > input  {
 position: relative;
     height: 7.5%;
     top: 0;
     left: 25%;
 }
+ul>p>input:hover:not(.active) {
+    background-color:lightcoral;
+    color: white;
+  }
 
 .suchen {
     background-color: lightgrey;
@@ -134,35 +138,3 @@ div {
 
 
 
-.Formular_Nachricht {
-    background-color: lightgrey;
-    width: 500px;
-    /* border: 5px solid black;*/
-    padding: 10px;
-    margin: 0px;
-    height: 100px;
-}
-
-#Copie {
-    opacity: 50%;
-    font-size: xx-small;
-}
-
-.senden {
-    background-color: lightgrey;
-    width: 70px;
-    padding: 10px;
-    margin: 0px;
-}
-
-
-
-.link:hover {
-    background: #FFDB93;
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    transform: scale(1.2);
-    opacity: .5;
-    filter: alpha(opacity=50);
-}
-*/
