@@ -1,189 +1,163 @@
 body {
-        font-family:  sans-serif;
-        margin-left: 25%;
-        margin-right: 5%;
+  font-family: sans-serif;
+  margin-left: 25%;
+  margin-right: 5%;
 }
 
-h1  {
-    font-size: 5em;
-    line-height: 0.5em;
-    top: 0%;
-    color: #5c82d9;
-    text-shadow: rgba(0, 0, 0, 0.5) -1px 0, rgba(0, 0, 0, 0.3) 0 -1px, rgba(255, 255, 255, 0.5) 2px 2px, rgba(0, 0, 0, 0.3) -1px -2px;
-   text-decoration: none;
+h1 {
+  font-size: 5em;
+  line-height: 0.5em;
+  top: 0%;
+  color: #5c82d9;
+  text-shadow: rgba(0, 0, 0, 0.5) -1px 0, rgba(0, 0, 0, 0.3) 0 -1px, rgba(255, 255, 255, 0.5) 2px 2px, rgba(0, 0, 0, 0.3) -1px -2px;
+  text-decoration: none;
 }
 
-h2{
-
-    font-size: 5em;
-    margin-left: auto;
-    margin-right: auto;
+h2 {
+  font-size: 5em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-h1 span { /*das O im Icon*/
-    color: red;
-    display: inline-block;
-    transform: translate(0.3em, 0em) rotate(45deg) scale(1, 1.5);
-    height: 0.1em;
-    text-shadow: 1px 1px black;
+h1 span {
+  /*das O im Icon*/
+  color: red;
+  display: inline-block;
+  transform: translate(0.3em, 0em) rotate(45deg) scale(1, 1.5);
+  height: 0.1em;
+  text-shadow: 1px 1px black;
 }
-
 
 ul {
-    
-    left: 0%;
-    padding: 0;
-    background-color: #f1f1f1;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-    top: 00%;
-    width: 15em;
-    
-   
-    
-  }
-  
-  li a {
-    display: block;
-    color: #000;
-    padding: 8px 16px;
-    text-decoration: none;
-  }
-  
-  li a.active {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  li a:hover:not(.active) {
-    background-color: #555;
-    color: white;
-  }
-
-ul > p > input  {
-position: relative;
-    height: 7.5%;
-    top: 0;
-    left: 25%;
+  left: 0%;
+  padding: 0;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  top: 00%;
+  width: 15em;
 }
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+ul>p>input {
+  position: relative;
+  height: 7.5%;
+  top: 0;
+  left: 25%;
+}
+
 ul>p>input:hover:not(.active) {
-    background-color:lightcoral;
-    color: white;
-  }
+  background-color: lightcoral;
+  color: white;
+}
 
 .suchen {
-    background-color: lightgrey;
-    width: 100%;
-    /* border: 5px solid black;*/
-    padding: 10px;
-    margin: 0px;
-}
-div {
-    display: block;
+  background-color: lightgrey;
+  width: 100%;
+  /* border: 5px solid black;*/
+  padding: 10px;
+  margin: 0px;
 }
 
+div {
+  display: block;
+}
 
 .test {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
-
 
 .test div {
-    width: 250px;
-    height: 250px;
-    background-color: white;
-    margin: 10px;
-    margin-bottom: 25px;
-    text-align: center;
-    border-radius: 5px;
-    border-color: rgb(255, 102, 102);
-    border-style: solid;
-    margin-left: auto;
-    margin-right: auto;
-
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin: 10px;
+  margin-bottom: 25px;
+  text-align: center;
+  border-radius: 5px;
+  border-color: rgb(255, 102, 102);
+  border-style: solid;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 .test div img {
-   position: relative;
-   margin-top: 5%;
-   margin-left: auto;
-   margin-right: auto;
-    max-height: 150px;
-   max-width: 250px;
+  position: relative;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 150px;
+  max-width: 250px;
+}
+
+.test div input {
+  position: absolute;
+  top: 240px;
+  left: 100px;
+  background-color: khaki;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media screen and (max-width: 1023px) {
-  body{
-
+  body {
     margin-left: 30%;
   }
-  
   h1 {
     font-size: 2.5em;
   }
-  h2{
-
+  h2 {
     font-size: 3em;
-}
-ul{
-
-  width: 10em;
-}
-
-
-
-
-
-
-}
-  
-  @media screen and (max-width: 600px) {
-    body{
-
-      margin-left: 35%;
-    }
-    
-    
-    h1 {
-      font-size: 2.5em;
-    }
-  
-    h2{
-
-      font-size: 2em;
   }
-  
-  ul{
-
+  ul {
     width: 10em;
   }
-  
-  
-  
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    margin-left: 45%;
+  }
+  h1 {
+    font-size: 2.5em;
+  }
+  h2 {
+    font-size: 2em;
+  }
+  ul {
+    width: 7em;
+  }
+  .test div {
+    width: 200px;
+    height: 250px;
+  }
+  .test div img {
+    max-height: 100px;
+    max-width: 200px;
+  }
+  .test div input {
+    
+    left: 70px;
+    
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
