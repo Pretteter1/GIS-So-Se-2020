@@ -135,7 +135,7 @@ div {
 
 @media screen and (max-width: 600px) {
   body {
-    margin-left: 45%;
+    margin-left: 60%;
   }
   h1 {
     font-size: 2.5em;
@@ -147,12 +147,12 @@ div {
     width: 7em;
   }
   .test div {
-    width: 200px;
+    width: 1500px;
     height: 250px;
   }
   .test div img {
     max-height: 100px;
-    max-width: 200px;
+    max-width: 150px;
   }
   .test div input {
     
