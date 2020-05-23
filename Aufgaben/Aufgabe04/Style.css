@@ -135,7 +135,7 @@ div {
 
 @media screen and (max-width: 600px) {
   body {
-    margin-left: 60%;
+    margin-left: 50%;
   }
   h1 {
     font-size: 2.5em;
