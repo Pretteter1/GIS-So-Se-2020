@@ -142,12 +142,13 @@ div {
   }
   h2 {
     font-size: 2em;
+    margin-left: 25%;
   }
   ul {
     width: 7em;
   }
   .test div {
-    width: 1500px;
+    width: 150px;
     height: 250px;
   }
   .test div img {
@@ -156,7 +157,7 @@ div {
   }
   .test div input {
     
-    left: 70px;
+    left: 45px;
     
   }
 
