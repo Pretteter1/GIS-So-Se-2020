@@ -135,13 +135,13 @@ div {
 
 @media screen and (max-width: 600px) {
   body {
-    margin-left: 30%;
+    margin-left: 35%;
   }
   h1 {
     font-size: 2.5em;
   }
   h2 {
-    font-size: 2em;
+    font-size: 1.7em;
     margin-left: 25%;
   }
   ul {
