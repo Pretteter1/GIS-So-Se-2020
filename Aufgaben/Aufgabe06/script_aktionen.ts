@@ -20,12 +20,12 @@ namespace Hauptseite {
     nochBlödereSachen.setAttribute("href", "#");
     nochBlödereSachen.innerHTML = "Noch Blödere Sachen";
 
-   /*
+   
     for (let i: number = 0; i < produkte.length; i++) {
         f_divs_generieren(i);
 
     }
-*/
+
     // divs generieren
 
     function f_divs_generieren(x: number): void {
@@ -103,13 +103,15 @@ namespace Hauptseite {
         entfernen.innerHTML = "";
         //location.reload();
 
-        let x: number = 1;
+        
         for (let i: number = 0; i < produkte.length; i++) {
         if (produkte[i].kategorie == "BlödeSachen") {
             
             
-                f_divs_generieren(x);
-                x++;
+                f_divs_generieren(i);
+                
+
+               // console.log("Blöd");
             }
              
             }       
@@ -120,13 +122,15 @@ namespace Hauptseite {
         let entfernen: HTMLDivElement = (<HTMLDivElement>document.querySelector("#test"));
         entfernen.innerHTML = "";
         //location.reload();
-        let x: number = 1;
+        
         for (let i: number = 0; i < produkte.length; i++) {
         if (produkte[i].kategorie == "NochBlödereSachen") {
             
             
-                f_divs_generieren(x);
-                x++;
+                f_divs_generieren(i);
+                
+
+              //  console.log("nbl");
             }
             } 
 

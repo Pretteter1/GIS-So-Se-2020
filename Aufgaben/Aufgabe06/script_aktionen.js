@@ -15,12 +15,9 @@ var Hauptseite;
     document.getElementById("nochblöderesachen")?.appendChild(nochBlödereSachen);
     nochBlödereSachen.setAttribute("href", "#");
     nochBlödereSachen.innerHTML = "Noch Blödere Sachen";
-    /*
-     for (let i: number = 0; i < produkte.length; i++) {
-         f_divs_generieren(i);
- 
-     }
- */
+    for (let i = 0; i < Hauptseite.produkte.length; i++) {
+        f_divs_generieren(i);
+    }
     // divs generieren
     function f_divs_generieren(x) {
         let newDiv1 = document.createElement("div");
@@ -69,11 +66,10 @@ var Hauptseite;
         let entfernen = document.querySelector("#test");
         entfernen.innerHTML = "";
         //location.reload();
-        let x = 1;
         for (let i = 0; i < Hauptseite.produkte.length; i++) {
             if (Hauptseite.produkte[i].kategorie == "BlödeSachen") {
-                f_divs_generieren(x);
-                x++;
+                f_divs_generieren(i);
+                // console.log("Blöd");
             }
         }
     }
@@ -81,11 +77,10 @@ var Hauptseite;
         let entfernen = document.querySelector("#test");
         entfernen.innerHTML = "";
         //location.reload();
-        let x = 1;
         for (let i = 0; i < Hauptseite.produkte.length; i++) {
             if (Hauptseite.produkte[i].kategorie == "NochBlödereSachen") {
-                f_divs_generieren(x);
-                x++;
+                f_divs_generieren(i);
+                //  console.log("nbl");
             }
         }
     }
