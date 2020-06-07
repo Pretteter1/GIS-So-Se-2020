@@ -79,6 +79,17 @@ li a:hover:not(.active) {
 
 }
 
+#hochzählen{
+
+  position: relative;
+  color: #4CAF50;
+
+  bottom: 23px;
+  left: 10px;
+  font-weight: 900;
+  font-size: x-large;
+}
+
 ul>p>input:hover:not(.active) {
   background-color: lightcoral;
   color: white;
@@ -89,7 +100,11 @@ ul>p>input:hover:not(.active) {
   width: 100%;
   /* border: 5px solid black;*/
   padding: 10px;
-  margin: 0;
+  margin: 0px;
+}
+
+div {
+  display: block;
 }
 
 #test {
@@ -98,7 +113,8 @@ ul>p>input:hover:not(.active) {
   flex-direction: row;
 }
 
- #test div {
+#test div {
+  position: relative;
   width: 250px;
   height: 250px;
   margin: 10px;
@@ -107,12 +123,12 @@ ul>p>input:hover:not(.active) {
   border-radius: 5px;
   border-color: rgb(255, 102, 102);
   border-style: solid;
-
-  
+  margin-left: auto;
+  margin-right: auto;
 }
 
- #test div img {
-  
+#test div img {
+  position: relative;
   margin-top: 5%;
   margin-left: auto;
   margin-right: auto;
@@ -120,7 +136,7 @@ ul>p>input:hover:not(.active) {
   max-width: 250px;
 }
 
- #test div input {
+#test div input {
   position: absolute;
   top: 240px;
   left: 100px;
@@ -128,10 +144,6 @@ ul>p>input:hover:not(.active) {
   margin-left: auto;
   margin-right: auto;
 }
-
-
-
-
 
 @media screen and (max-width: 1023px) {
   body {

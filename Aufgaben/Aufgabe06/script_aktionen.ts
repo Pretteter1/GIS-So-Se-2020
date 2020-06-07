@@ -1,54 +1,150 @@
 namespace Hauptseite {
 
+    let preisgesammt: number = 0;
 
-    //Startseite divs generieren
-    for (let i: number = 0; i < blödesachen.length; i++) {
-    
-        let newDiv1: HTMLDivElement = document.createElement("div");
-        newDiv1.id = "divNr" + i;
-        document.getElementById("test")?.appendChild(newDiv1);
-    
-        let imgElement1: HTMLImageElement = document.createElement("img");
-        imgElement1.src = blödesachen[i].bild;
-        document.getElementById("divNr" + i)?.appendChild(imgElement1);
-    
-        let namePrice1: HTMLParagraphElement = document.createElement("p");
-        namePrice1.innerHTML = `${blödesachen[i].name} ${blödesachen[i].preis.toLocaleString().fixed()}€`;
-        document.getElementById("divNr" + i)?.appendChild(namePrice1);
-    
-        let desc1: HTMLParagraphElement = document.createElement("p");
-        desc1.innerHTML = blödesachen[i].beschreibung;
-        document.getElementById("divNr" + i)?.appendChild(desc1);
-    
-        let kaufen1: HTMLButtonElement = document.createElement("button");
-        kaufen1.innerHTML = "kaufen";
-        document.getElementById("divNr" + i)?.appendChild(kaufen1);
+    //Header generieren
+
+    let alles: HTMLAnchorElement = document.createElement("a");
+    document.getElementById("alleprodukte")?.appendChild(alles);
+    alles.setAttribute("href", "#");
+    alles.innerHTML = "Alle Produkte";
+
+
+    let blödeSachen: HTMLAnchorElement = document.createElement("a");
+    document.getElementById("blödesachen")?.appendChild(blödeSachen);
+    blödeSachen.setAttribute("href", "#");
+    blödeSachen.innerHTML = "Blöde Sachen";
+
+    let nochBlödereSachen: HTMLAnchorElement = document.createElement("a");
+    document.getElementById("nochblöderesachen")?.appendChild(nochBlödereSachen);
+    nochBlödereSachen.setAttribute("href", "#");
+    nochBlödereSachen.innerHTML = "Noch Blödere Sachen";
+
+   /*
+    for (let i: number = 0; i < produkte.length; i++) {
+        f_divs_generieren(i);
+
+    }
+*/
+    // divs generieren
+
+    function f_divs_generieren(x: number): void {
+        
+
+            let newDiv1: HTMLDivElement = document.createElement("div");
+            newDiv1.id = "divNr" + x;
+            document.getElementById("test")?.appendChild(newDiv1);
+
+            let imgElement1: HTMLImageElement = document.createElement("img");
+            imgElement1.src = produkte[x].bild;
+            document.getElementById("divNr" + x)?.appendChild(imgElement1);
+
+            let namePrice1: HTMLParagraphElement = document.createElement("p");
+            namePrice1.innerHTML = produkte[x].name;
+            document.getElementById("divNr" + x)?.appendChild(namePrice1);
+
+            let desc1: HTMLParagraphElement = document.createElement("p");
+            desc1.innerHTML = produkte[x].beschreibung;
+            document.getElementById("divNr" + x)?.appendChild(desc1);
+
+            let kaufen1: HTMLButtonElement = document.createElement("button");
+            kaufen1.innerHTML = `${produkte[x].preis.toLocaleString()}€`;
+            document.getElementById("divNr" + x)?.appendChild(kaufen1);
+
+
+            kaufen1.setAttribute("trouble", `${produkte[x].preis}`);
+            kaufen1.addEventListener("click", ZumWarenkorbHinzufügen);
+        
+
     }
 
-    //Blöde_Sachen divs generieren
-    for (let i: number = 0; i < nochblöderesachen.length; i++) {
-    
-        let newDiv: HTMLDivElement = document.createElement("div");
-        newDiv.id = "divNr" + i;
-        document.getElementById("test")?.appendChild(newDiv);
-    
-        let imgElement: HTMLImageElement = document.createElement("img");
-        imgElement.src = nochblöderesachen[i].bild;
-        document.getElementById("divNr" + i)?.appendChild(imgElement);
-    
-        let namePrice: HTMLParagraphElement = document.createElement("p");
-        namePrice.innerHTML = `${nochblöderesachen[i].name} ${nochblöderesachen[i].preis.toLocaleString().fixed()}€`;
-        document.getElementById("divNr" + i)?.appendChild(namePrice);
-    
-        let desc: HTMLParagraphElement = document.createElement("p");
-        desc.innerHTML = nochblöderesachen[i].beschreibung;
-        document.getElementById("divNr" + i)?.appendChild(desc);
-    
-        let kaufen: HTMLButtonElement = document.createElement("button");
-        kaufen.innerHTML = "kaufen";
-        document.getElementById("divNr" + i)?.appendChild(kaufen);
-   
+    //Waarenkorb Zähler
+    let zählerW: number = 1;
+    let nummerW: HTMLSpanElement = document.createElement("span");
+
+    function ZumWarenkorbHinzufügen(_element: Event): void {
+        nummerW.innerHTML = zählerW.toString();
+        nummerW.setAttribute("id", "hochzählen");
+        document.getElementById("header")?.appendChild(nummerW);
+
+        zählerW++;
+
+        let target: HTMLElement = (<HTMLElement>_element.target);
+        let preisindex: number = parseFloat(target.getAttribute("trouble")!);
+
+        preisgesammt = preisgesammt + preisindex;
+
+        console.log(preisgesammt);
     }
+
+
+
+    alles.addEventListener("click", f_alles);
+    blödeSachen.addEventListener("click", f_blödesachen);
+    nochBlödereSachen.addEventListener("click", f_nochblöderesachen);
+
+    function f_alles(): void {
+
+        let entfernen: HTMLDivElement = (<HTMLDivElement>document.querySelector("#test"));
+        entfernen.innerHTML = "";
+
+        //location.reload();
+        for (let i: number = 0; i < produkte.length; i++) {
+        
+            f_divs_generieren(i);
+
+        }
+
+    }
+
+    function f_blödesachen(): void {
+
+        let entfernen: HTMLDivElement = (<HTMLDivElement>document.querySelector("#test"));
+        entfernen.innerHTML = "";
+        //location.reload();
+
+        let x: number = 1;
+        for (let i: number = 0; i < produkte.length; i++) {
+        if (produkte[i].kategorie == "BlödeSachen") {
+            
+            
+                f_divs_generieren(x);
+                x++;
+            }
+             
+            }       
+    }
+
+    function f_nochblöderesachen(): void {
+        
+        let entfernen: HTMLDivElement = (<HTMLDivElement>document.querySelector("#test"));
+        entfernen.innerHTML = "";
+        //location.reload();
+        let x: number = 1;
+        for (let i: number = 0; i < produkte.length; i++) {
+        if (produkte[i].kategorie == "NochBlödereSachen") {
+            
+            
+                f_divs_generieren(x);
+                x++;
+            }
+            } 
+
+
+
+}
+
+    
+
+
+
+
+
+
+
+    //Suchleiste
+    //let searchBar: HTMLElement = <HTMLElement> <unknown>document.getElementsByClassName("suchen");
+    // searchBar.addEventListener("keyup", handleSearch);
 
 }
 
