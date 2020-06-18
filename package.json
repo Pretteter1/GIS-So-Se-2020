@@ -1,0 +1,19 @@
+{
+  "name": "pretteter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node Aufgaben/Aufgabe08/Server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pretteter1/GIS-So-Se-2020.git"
+  },
+  "author": "Jan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pretteter1/GIS-So-Se-2020/issues"
+  },
+  "homepage": "https://github.com/Pretteter1/GIS-So-Se-2020#readme"
+}

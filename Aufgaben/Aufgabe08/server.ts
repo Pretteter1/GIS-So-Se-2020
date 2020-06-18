@@ -1,0 +1,8 @@
+namespace Aufgabe8 {
+
+
+}
+
+
+
+
