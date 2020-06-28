@@ -16,7 +16,8 @@
     "url": "https://github.com/Pretteter1/GIS-So-Se-2020/issues"
   },
   "homepage": "https://github.com/Pretteter1/GIS-So-Se-2020#readme",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@types/node": "^14.0.13"
   }
 }

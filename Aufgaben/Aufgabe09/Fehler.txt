@@ -1,0 +1,35 @@
+2020-06-18T13:38:02.000000+00:00 app[api]: Build started by user jan97@kabelmail.de
+2020-06-18T13:38:20.698823+00:00 app[api]: Release v6 created by user jan97@kabelmail.de
+2020-06-18T13:38:20.698823+00:00 app[api]: Deploy 8fa1b581 by user jan97@kabelmail.de
+2020-06-18T13:38:21.846823+00:00 heroku[web.1]: State changed from crashed to starting
+2020-06-18T13:38:21.000000+00:00 app[api]: Build succeeded
+2020-06-18T13:38:24.971708+00:00 heroku[web.1]: Starting process with command `npm start`
+2020-06-18T13:38:28.011358+00:00 heroku[web.1]: Process exited with status 1
+2020-06-18T13:38:28.061606+00:00 heroku[web.1]: State changed from starting to crashed
+2020-06-18T13:38:27.863584+00:00 app[web.1]: 
+2020-06-18T13:38:27.863611+00:00 app[web.1]: > pretteter@1.0.0 start /app
+2020-06-18T13:38:27.863612+00:00 app[web.1]: > node Aufgaben/Aufgabe08/Server.js
+2020-06-18T13:38:27.863613+00:00 app[web.1]: 
+2020-06-18T13:38:27.928558+00:00 app[web.1]: internal/modules/cjs/loader.js:969
+2020-06-18T13:38:27.928559+00:00 app[web.1]:   throw err;
+2020-06-18T13:38:27.928560+00:00 app[web.1]:   ^
+2020-06-18T13:38:27.928560+00:00 app[web.1]: 
+2020-06-18T13:38:27.928561+00:00 app[web.1]: Error: Cannot find module '/app/Aufgaben/Aufgabe08/Server.js'
+2020-06-18T13:38:27.928562+00:00 app[web.1]:     at Function.Module._resolveFilename (internal/modules/cjs/loader.js:966:15)
+2020-06-18T13:38:27.928562+00:00 app[web.1]:     at Function.Module._load (internal/modules/cjs/loader.js:842:27)
+2020-06-18T13:38:27.928563+00:00 app[web.1]:     at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:71:12)
+2020-06-18T13:38:27.928563+00:00 app[web.1]:     at internal/main/run_main_module.js:17:47 {
+2020-06-18T13:38:27.928563+00:00 app[web.1]:   code: 'MODULE_NOT_FOUND',
+2020-06-18T13:38:27.928564+00:00 app[web.1]:   requireStack: []
+2020-06-18T13:38:27.928564+00:00 app[web.1]: }
+2020-06-18T13:38:27.937614+00:00 app[web.1]: npm ERR! code ELIFECYCLE
+2020-06-18T13:38:27.938033+00:00 app[web.1]: npm ERR! errno 1
+2020-06-18T13:38:27.939710+00:00 app[web.1]: npm ERR! pretteter@1.0.0 start: `node Aufgaben/Aufgabe08/Server.js`
+2020-06-18T13:38:27.939942+00:00 app[web.1]: npm ERR! Exit status 1
+2020-06-18T13:38:27.940254+00:00 app[web.1]: npm ERR! 
+2020-06-18T13:38:27.940466+00:00 app[web.1]: npm ERR! Failed at the pretteter@1.0.0 start script.
+2020-06-18T13:38:27.940658+00:00 app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+2020-06-18T13:38:27.949289+00:00 app[web.1]: npm WARN Local package.json exists, but node_modules missing, did you mean to install?
+2020-06-18T13:38:27.950136+00:00 app[web.1]: 
+2020-06-18T13:38:27.950422+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2020-06-18T13:38:27.950616+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2020-06-18T13_38_27_942Z-debug.log
