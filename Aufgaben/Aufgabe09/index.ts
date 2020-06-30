@@ -15,7 +15,8 @@ namespace Aufgabe09 {
         formData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         let url: string = "https://pretteter.herokuapp.com";
-        url = url + "?" + query.toString();
+        //let url: string = "http://localhost:8100";
+        url = url + "/html?" + query.toString();
         
         let antwort: Response = await fetch(url);
         let antwort2: string = await antwort.text();
@@ -28,6 +29,7 @@ namespace Aufgabe09 {
         formData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         let url: string = "https://pretteter.herokuapp.com";
+        //let url: string = "http://localhost:8100";
         url = url + "/json?" + query.toString();
         console.log(url);
         

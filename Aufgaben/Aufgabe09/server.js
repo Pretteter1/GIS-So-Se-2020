@@ -23,6 +23,8 @@ var A09Server;
         console.log("Listening");
     }
     function handleRequest(_request, _response) {
+        _response.setHeader("content-type", "text/html; charset=utf-8");
+        _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let url = Url.parse(_request.url, true);
             if (url.pathname == "/html") {
