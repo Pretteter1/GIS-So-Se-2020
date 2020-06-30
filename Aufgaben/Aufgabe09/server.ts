@@ -1,8 +1,9 @@
 
 
 import * as Http from "http";
+import * as Url from "url";
 
-export namespace A08Server {
+export namespace A09Server {
     console.log("Starting server");
     //Port wird als Variable abgespeichert
     let port: number = Number(process.env.PORT);
@@ -23,13 +24,20 @@ export namespace A08Server {
     }
 
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
-        console.log("I hear voices!");
-//Für die response wird ein Header aufgebaut
-        _response.setHeader("content-type", "text/html; charset=utf-8");
-        _response.setHeader("Access-Control-Allow-Origin", "*");
-//in die Response wird die request eingetragen
-        _response.write(_request.url);
-//response wird beendet
+        
+        if (_request.url) {
+            let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
+            
+            if (url.pathname == "/html") {
+              for (let key in url.query) {
+                _response.write(key + ": " + url.query[key] + "<br/>");
+              }
+            }
+            else if (url.pathname == "/json") {
+              let jsonString: string = JSON.stringify(url.query);
+              _response.write(jsonString);
+            }
+          }
         _response.end();
     }
 }

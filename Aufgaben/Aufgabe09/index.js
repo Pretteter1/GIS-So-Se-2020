@@ -8,7 +8,7 @@ var Aufgabe09;
     // let antwort: string;
     // let url: string = "https://pretteter.herokuapp.com";
     let formData;
-    async function HTML(_event) {
+    async function HTML() {
         formData = new FormData(document.forms[0]);
         let query = new URLSearchParams(formData);
         let url = "https://pretteter.herokuapp.com";
@@ -18,11 +18,12 @@ var Aufgabe09;
         let antwortHTML = document.getElementById("ausgabe");
         antwortHTML.innerHTML = antwort2;
     }
-    async function JSON(_event) {
+    async function JSON() {
         formData = new FormData(document.forms[0]);
         let query = new URLSearchParams(formData);
         let url = "https://pretteter.herokuapp.com";
-        url = url + "?" + query.toString();
+        url = url + "/json?" + query.toString();
+        console.log(url);
         let antwort = await fetch(url);
         let json = await antwort.json();
         console.log(json);

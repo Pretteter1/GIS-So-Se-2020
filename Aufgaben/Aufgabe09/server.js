@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.A08Server = void 0;
+exports.A09Server = void 0;
 const Http = require("http");
-var A08Server;
-(function (A08Server) {
+const Url = require("url");
+var A09Server;
+(function (A09Server) {
     console.log("Starting server");
     //Port wird als Variable abgespeichert
     let port = Number(process.env.PORT);
@@ -22,14 +23,19 @@ var A08Server;
         console.log("Listening");
     }
     function handleRequest(_request, _response) {
-        console.log("I hear voices!");
-        //Für die response wird ein Header aufgebaut
-        _response.setHeader("content-type", "text/html; charset=utf-8");
-        _response.setHeader("Access-Control-Allow-Origin", "*");
-        //in die Response wird die request eingetragen
-        _response.write(_request.url);
-        //response wird beendet
+        if (_request.url) {
+            let url = Url.parse(_request.url, true);
+            if (url.pathname == "/html") {
+                for (let key in url.query) {
+                    _response.write(key + ": " + url.query[key] + "<br/>");
+                }
+            }
+            else if (url.pathname == "/json") {
+                let jsonString = JSON.stringify(url.query);
+                _response.write(jsonString);
+            }
+        }
         _response.end();
     }
-})(A08Server = exports.A08Server || (exports.A08Server = {}));
+})(A09Server = exports.A09Server || (exports.A09Server = {}));
 //# sourceMappingURL=server.js.map
