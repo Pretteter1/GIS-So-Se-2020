@@ -1,0 +1,61 @@
+[
+  {
+    "kategorie": "Fruchteis",
+    "bild": "images/KugelErdbeere.png",
+    "name": "Erdbeere",
+    "preis": 1,
+    "beschreibung": "fruchtig-intensiv"
+  },
+  {
+    "kategorie": "Fruchteis",
+    "bild": "images/KugelZitrone.png",
+    "name": "Zitrone",
+    "preis": 1,
+    "beschreibung": "sauer-süß"
+  },
+  {
+    "kategorie": "Fruchteis",
+    "bild": "images/KugelMango.png",
+    "name": "Mango",
+    "preis": 1,
+    "beschreibung": "süß"
+  },
+  {
+    "kategorie": "Fruchteis",
+    "bild": "images/KugelSchlumpf.png",
+    "name": "Schlumpfeis",
+    "preis": 1,
+    "beschreibung": "macht dich schlau"
+  },
+  {
+    "kategorie": "Fruchteis",
+    "bild": "images/KugelRose.png",
+    "name": "Rosé",
+    "preis": 1,
+    "beschreibung": "Verführerisch"
+  },
+
+    {
+    "kategorie": "Topping",
+    "bild": "images/Schokostreusel.png",
+    "name": "Schokostreusel",
+    "preis": 0.30,
+    "beschreibung": "zu viele Kalorien"
+  },
+
+  {
+    "kategorie": "Topping",
+    "bild": "images/Schoko+Streusel.png",
+    "name": "Bissl anders",
+    "preis": 0.30,
+    "beschreibung": "noch mehr Kalorien"
+  },
+
+  {
+    "kategorie": "Topping",
+    "bild": "images/Rosa-Topping.png",
+    "name": "Rosa+Streusel",
+    "preis": 0.30,
+    "beschreibung": "Piiiink!!"
+  }
+]
