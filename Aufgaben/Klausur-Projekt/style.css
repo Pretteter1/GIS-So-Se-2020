@@ -143,7 +143,7 @@ div {
 
 
 .Formular_Daten {
-  background-color: rgb(4, 44, 82);
+  background-color: rgb(10, 88, 161);
   width: 400px;
   padding: 10px;
   margin: 0px;
@@ -166,11 +166,3 @@ div {
   height: 50px;
 }
 
-.Absatz {
-  color: blue;
-  position: absolute;
-  top: 100px;
-  right: 30%;
-  width: 250px;
-  height: 100px;
-} 

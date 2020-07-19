@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node Aufgaben/Aufgabe09/server.js"
+    "start": "node Aufgaben/Klausur-Projekt/server.js"
   },
   "repository": {
     "type": "git",

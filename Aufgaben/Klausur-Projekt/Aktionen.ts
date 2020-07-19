@@ -179,8 +179,8 @@ namespace Klausur {
         shop.innerHTML = "<b>Eiskugeln</b>";
         ware.innerHTML = "Toppings";
         verkäufer.innerHTML = "Eis kaufen!!!!!";
-       
-       
+
+
         let entfernen: HTMLDivElement = (<HTMLDivElement>document.querySelector("#test"));
 
         entfernen.innerHTML = "";
@@ -278,7 +278,7 @@ namespace Klausur {
                 "<p id=Copie>Durch das Absenden dieser Nachricht <br> akzeptiere ich den Datenschutz</p>" +
                 "<br>" +
 
-                "<button class=senden > Bestellung abschicken</button >" +
+                "<button class=senden id=absenden > Bestellung abschicken</button >" +
                 "<br>" +
                 "<br>" +
                 "<button class=senden id=senden > Neuer Versuch</button >" +
@@ -287,9 +287,15 @@ namespace Klausur {
                 "<br>"
                 ;
 
-            
-            document.getElementById("senden")?.addEventListener("click", reload);
 
+            document.getElementById("senden")?.addEventListener("click", reload);
+            let btnJSON: HTMLButtonElement = <HTMLButtonElement>document.getElementById("absenden");
+            btnJSON.addEventListener("click", JSON);
+
+            home.removeEventListener("click", f_home);
+            shop.removeEventListener("click", f_shop);
+            ware.removeEventListener("click", f_topping);
+            verkäufer.removeEventListener("click", f_bestellung);
         }
 
     }
@@ -391,6 +397,21 @@ namespace Klausur {
 
         location.reload(true);
         localStorage.clear();
+    }
+
+    async function JSON(): Promise<void> {
+        
+        let formData: FormData;
+        formData = new FormData(document.forms[0]);
+        let query: URLSearchParams = new URLSearchParams(<any>formData);
+        let url: string = "https://pretteter.herokuapp.com";
+        //let url: string = "http://localhost:8100";
+        url = url + "/json?" + query.toString();
+        console.log(url);
+        
+        let antwort: Response = await fetch(url);
+        let json: string = await antwort.json();
+        console.log(json);
     }
 
 }

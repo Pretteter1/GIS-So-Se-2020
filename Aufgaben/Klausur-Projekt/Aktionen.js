@@ -169,13 +169,19 @@ var Klausur;
                 "<br>" +
                 "<p id=Copie>Durch das Absenden dieser Nachricht <br> akzeptiere ich den Datenschutz</p>" +
                 "<br>" +
-                "<button class=senden > Bestellung abschicken</button >" +
+                "<button class=senden id=absenden > Bestellung abschicken</button >" +
                 "<br>" +
                 "<br>" +
                 "<button class=senden id=senden > Neuer Versuch</button >" +
                 "<br>" +
                 "<br>";
             document.getElementById("senden")?.addEventListener("click", reload);
+            let btnJSON = document.getElementById("absenden");
+            btnJSON.addEventListener("click", JSON);
+            home.removeEventListener("click", f_home);
+            shop.removeEventListener("click", f_shop);
+            ware.removeEventListener("click", f_topping);
+            verkäufer.removeEventListener("click", f_bestellung);
         }
     }
     function f_zuviele() {
@@ -236,6 +242,18 @@ var Klausur;
     function reload() {
         location.reload(true);
         localStorage.clear();
+    }
+    async function JSON() {
+        let formData;
+        formData = new FormData(document.forms[0]);
+        let query = new URLSearchParams(formData);
+        let url = "https://pretteter.herokuapp.com";
+        //let url: string = "http://localhost:8100";
+        url = url + "/json?" + query.toString();
+        console.log(url);
+        let antwort = await fetch(url);
+        let json = await antwort.json();
+        console.log(json);
     }
 })(Klausur || (Klausur = {}));
 //# sourceMappingURL=Aktionen.js.map
