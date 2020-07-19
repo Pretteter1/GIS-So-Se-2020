@@ -160,25 +160,25 @@ var Klausur;
                 + "<hr>" +
                 preisgesammt + "€" +
                 "<hr>" +
-                "<input class=Formular_Daten type=text id=Vname  placeholder=Vorname> <br>" +
-                "<input class=Formular_Daten type=text id=Nname  placeholder=Nachname>" +
+                "<input class=Formular_Daten type=text name=Vorname id=Vname  placeholder=Vorname> <br>" +
+                "<input class=Formular_Daten type=text name=Nachname id=Nname  placeholder=Nachname>" +
                 "<br>" +
                 "<br>" +
-                "<input class=Formular_Daten type=text id=Adresse  placeholder=Adresse>" +
+                "<input class=Formular_Daten type=text name=Adresse id=Adresse  placeholder=Adresse>" +
                 "<br>" +
                 "<br>" +
                 "<p id=Copie>Durch das Absenden dieser Nachricht <br> akzeptiere ich den Datenschutz</p>" +
                 "<br>" +
-                "<button class=senden id=absenden > Bestellung abschicken</button >" +
+                "<button class=senden id=server > Bestellung abschicken</button >" +
                 "<br>" +
                 "<br>" +
                 "<button class=senden id=senden > Neuer Versuch</button >" +
                 "<br>" +
                 "<br>";
             document.getElementById("senden")?.addEventListener("click", reload);
-            let btnJSON = document.getElementById("absenden");
+            let btnJSON = document.getElementById("server");
             btnJSON.addEventListener("click", JSON);
-            home.removeEventListener("click", f_home);
+            btnJSON.addEventListener("click", danke);
             shop.removeEventListener("click", f_shop);
             ware.removeEventListener("click", f_topping);
             verkäufer.removeEventListener("click", f_bestellung);
@@ -197,10 +197,10 @@ var Klausur;
         document.getElementById("test")?.appendChild(newDiv1);
         //document.getElementById("zuvielekugeln")?.appendChild(newDiv1);
         let kaufen1 = document.createElement("button");
-        kaufen1.innerHTML = "Neuer Versuch";
+        kaufen1.innerHTML = "Bestellung aufgeben";
         document.getElementById("löschen")?.appendChild(kaufen1);
         // document.getElementById("löschen")?.appendChild(kaufen1);
-        kaufen1.addEventListener("click", reload);
+        kaufen1.addEventListener("click", f_bestellung);
     }
     function ZumWarenkorbHinzufügen(_element) {
         nummerW.innerHTML = zählerW.toString();
@@ -254,6 +254,15 @@ var Klausur;
         let antwort = await fetch(url);
         let json = await antwort.json();
         console.log(json);
+    }
+    function danke() {
+        let entfernen = document.querySelector("#bestellung");
+        entfernen.innerHTML = "";
+        entfernen.innerHTML = "<h2>Danke für die Bestellung</h2>" +
+            "<br>" +
+            "<br>" +
+            "<button class=senden id=senden > Neue Bestellung?</button >";
+        document.getElementById("senden")?.addEventListener("click", reload);
     }
 })(Klausur || (Klausur = {}));
 //# sourceMappingURL=Aktionen.js.map

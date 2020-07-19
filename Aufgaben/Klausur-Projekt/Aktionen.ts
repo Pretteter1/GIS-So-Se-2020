@@ -268,17 +268,17 @@ namespace Klausur {
                 + "<hr>" +
                 preisgesammt + "€" +
                 "<hr>" +
-                "<input class=Formular_Daten type=text id=Vname  placeholder=Vorname> <br>" +
-                "<input class=Formular_Daten type=text id=Nname  placeholder=Nachname>" +
+                "<input class=Formular_Daten type=text name=Vorname id=Vname  placeholder=Vorname> <br>" +
+                "<input class=Formular_Daten type=text name=Nachname id=Nname  placeholder=Nachname>" +
                 "<br>" +
                 "<br>" +
-                "<input class=Formular_Daten type=text id=Adresse  placeholder=Adresse>" +
+                "<input class=Formular_Daten type=text name=Adresse id=Adresse  placeholder=Adresse>" +
                 "<br>" +
                 "<br>" +
                 "<p id=Copie>Durch das Absenden dieser Nachricht <br> akzeptiere ich den Datenschutz</p>" +
                 "<br>" +
 
-                "<button class=senden id=absenden > Bestellung abschicken</button >" +
+                "<button class=senden id=server > Bestellung abschicken</button >" +
                 "<br>" +
                 "<br>" +
                 "<button class=senden id=senden > Neuer Versuch</button >" +
@@ -289,10 +289,11 @@ namespace Klausur {
 
 
             document.getElementById("senden")?.addEventListener("click", reload);
-            let btnJSON: HTMLButtonElement = <HTMLButtonElement>document.getElementById("absenden");
+            let btnJSON: HTMLButtonElement = <HTMLButtonElement>document.getElementById("server");
             btnJSON.addEventListener("click", JSON);
+            btnJSON.addEventListener("click", danke);
 
-            home.removeEventListener("click", f_home);
+
             shop.removeEventListener("click", f_shop);
             ware.removeEventListener("click", f_topping);
             verkäufer.removeEventListener("click", f_bestellung);
@@ -320,11 +321,11 @@ namespace Klausur {
         //document.getElementById("zuvielekugeln")?.appendChild(newDiv1);
 
         let kaufen1: HTMLButtonElement = document.createElement("button");
-        kaufen1.innerHTML = "Neuer Versuch";
+        kaufen1.innerHTML = "Bestellung aufgeben";
         document.getElementById("löschen")?.appendChild(kaufen1);
         // document.getElementById("löschen")?.appendChild(kaufen1);
 
-        kaufen1.addEventListener("click", reload);
+        kaufen1.addEventListener("click", f_bestellung);
 
     }
 
@@ -399,8 +400,10 @@ namespace Klausur {
         localStorage.clear();
     }
 
+
+
     async function JSON(): Promise<void> {
-        
+
         let formData: FormData;
         formData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>formData);
@@ -408,10 +411,24 @@ namespace Klausur {
         //let url: string = "http://localhost:8100";
         url = url + "/json?" + query.toString();
         console.log(url);
-        
+
         let antwort: Response = await fetch(url);
         let json: string = await antwort.json();
         console.log(json);
     }
 
+    function danke(): void {
+
+        let entfernen: HTMLDivElement = (<HTMLDivElement>document.querySelector("#bestellung"));
+        entfernen.innerHTML = "";
+
+        entfernen.innerHTML = "<h2>Danke für die Bestellung</h2>" +
+            "<br>" +
+            "<br>" +
+            "<button class=senden id=senden > Neue Bestellung?</button >"
+;
+
+
+        document.getElementById("senden")?.addEventListener("click", reload);
+    }
 }

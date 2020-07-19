@@ -1,7 +1,6 @@
 html {
   height: 100%;
   background-image: linear-gradient(to right top, #8e44ad 0%, #3498db 100%);
-  
 }
 
 nav {
@@ -105,7 +104,7 @@ div {
 #Becher {
   position: relative;
   max-height: 400px;
-  max-width: 400px;
+  max-width: 150px;
   margin-left: auto;
   margin-right: auto;
   margin-top: -50px;
@@ -140,18 +139,13 @@ div {
   justify-content: space-around;
 }
 
-
-
 .Formular_Daten {
   background-color: rgb(10, 88, 161);
   width: 400px;
   padding: 10px;
   margin: 0px;
   height: 30px;
-  
 }
-
-
 
 #Copie {
   opacity: 50%;
@@ -166,3 +160,79 @@ div {
   height: 50px;
 }
 
+@media screen and (max-width: 1023px) {
+  #eis {
+    max-width: 60px;
+    max-height: 50px;
+    margin-top: 10%;
+    margin-left: 29.5%;
+  }
+  #Waffel {
+    max-width: 120px;
+  }
+  #test {
+    margin-left: 15%;
+  }
+  #Becher {
+    max-height: 200px;
+    max-width: 120px;
+    margin-top: -35px;
+  }
+  #zusatz {
+    margin-top: -10px;
+    max-height: 300px;
+  }
+  #zusatz div img {
+    max-height: 200px;
+    max-width: 300px;
+    margin-top: 0px;
+  }
+  .senden {
+    margin-left: 30%;
+  }
+  #Copie {
+    margin-left: 30%;
+  }
+  .Formular_Daten {
+    max-width: 300px;
+    ;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  
+  #Waffel {
+    max-width: 100px;
+  }
+  #Becher {
+    max-height: 200px;
+    max-width: 100px;
+    margin-top: -35px;
+  }
+  #zusatz {
+    margin-top: -10px;
+    max-height: 300px;
+    margin-bottom: 5%;
+    
+  }
+  #zusatz div img {
+    max-height: 150px;
+    max-width: 250px;
+    margin-top: 15px;
+  }
+
+  #test{
+
+    margin-left: 10px;
+  }
+  .senden {
+    margin-left: 30%;
+  }
+  #Copie {
+    margin-left: 30%;
+  }
+  .Formular_Daten {
+    max-width: 200px;
+    ;
+  }
+}
