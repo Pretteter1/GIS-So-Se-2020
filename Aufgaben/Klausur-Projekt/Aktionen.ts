@@ -264,7 +264,7 @@ namespace Klausur {
             entfernen.id = "bestellung";
 
 
-            entfernen.innerHTML = "" + "<h2>" + "Bestellung" + "</h2>"
+            entfernen.innerHTML = "" + "<form action=https://pretteter.herokuapp.com method=GET>" + "<h2>" + "Bestellung" + "</h2>"
                 + "<hr>" +
                 preisgesammt + "€" +
                 "<hr>" +
@@ -284,7 +284,9 @@ namespace Klausur {
                 "<button class=senden id=senden > Neuer Versuch</button >" +
 
                 "<br>" +
-                "<br>"
+                "<br>" +
+                "</form>"
+
                 ;
 
 
@@ -426,7 +428,7 @@ namespace Klausur {
             "<br>" +
             "<br>" +
             "<button class=senden id=senden > Neue Bestellung?</button >"
-;
+            ;
 
 
         document.getElementById("senden")?.addEventListener("click", reload);

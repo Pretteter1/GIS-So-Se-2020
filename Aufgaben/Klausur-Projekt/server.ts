@@ -2,28 +2,43 @@
 
 import * as Http from "http";
 import * as Url from "url";
+import * as Mongo from "mongodb";
 
-export namespace Klausur {
+
+export namespace Aufgabe11 {
+  
+  let datenUrl: string;
+  datenUrl = "mongodb+srv://Test:qwertzui@uff.r1smf.mongodb.net/Test?retryWrites=true&w=majority";
+  verbindungDatenbank(datenUrl);
+ 
+  let daten: Mongo.Collection;
+
   console.log("Starting server");
-  //Port wird als Variable abgespeichert
+
   let port: number = Number(process.env.PORT);
-  //Wenn kein Port dann port=8100
   if (!port)
     port = 8100;
-  //Server wird als Variable abgespeichert
+
   let server: Http.Server = Http.createServer();
-  //Für Anfrage und zuhören werden Listener gebaut
   server.addListener("request", handleRequest);
   server.addListener("listening", handleListen);
-  //Server schaut nach dem Port
   server.listen(port);
 
-  //Beim Vorgang Listening wird das auch in der Console ausgegeben
+  async function verbindungDatenbank(_url: string): Promise<void> {
+
+    let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
+    let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
+    await mongoClient.connect();
+
+    daten = mongoClient.db("Test").collection("Students");
+  }
+
   function handleListen(): void {
     console.log("Listening");
   }
 
-  function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
+  async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
+    console.log("I hear voices!");
 
 
     _response.setHeader("content-type", "text/html; charset=utf-8");
@@ -32,24 +47,20 @@ export namespace Klausur {
 
     if (_request.url) {
       let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
+      let pathname: String | null = url.pathname;
 
-      if (url.pathname == "/html") {
-        for (let key in url.query) {
-          _response.write(key + ": " + url.query[key] + "<br/>");
-        }
-      }
-      else if (url.pathname == "/json") {
-        let jsonString: string = JSON.stringify(url.query);
-        _response.write(jsonString);
+      if (pathname == "/hinzufuegen") {
+
+        daten.insertOne(url.query);
+
+      } else if (pathname == "/anzeigen") {
+        _response.write(JSON.stringify(await daten.find().toArray()));
       }
     }
+
     _response.end();
   }
 }
-
-
-
-
 
 
 

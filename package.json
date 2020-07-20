@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Pretteter1/GIS-So-Se-2020#readme",
   "dependencies": {
+    "@types/mongodb": "^3.5.25",
     "mongodb": "^3.5.9"
   },
   "devDependencies": {

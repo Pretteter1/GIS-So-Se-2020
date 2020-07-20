@@ -156,7 +156,7 @@ var Klausur;
             let entfernen = document.querySelector("#test");
             entfernen.innerHTML = "";
             entfernen.id = "bestellung";
-            entfernen.innerHTML = "" + "<h2>" + "Bestellung" + "</h2>"
+            entfernen.innerHTML = "" + "<form action=https://pretteter.herokuapp.com method=GET>" + "<h2>" + "Bestellung" + "</h2>"
                 + "<hr>" +
                 preisgesammt + "€" +
                 "<hr>" +
@@ -174,7 +174,8 @@ var Klausur;
                 "<br>" +
                 "<button class=senden id=senden > Neuer Versuch</button >" +
                 "<br>" +
-                "<br>";
+                "<br>" +
+                "</form>";
             document.getElementById("senden")?.addEventListener("click", reload);
             let btnJSON = document.getElementById("server");
             btnJSON.addEventListener("click", JSON);

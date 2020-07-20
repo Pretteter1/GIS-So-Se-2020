@@ -1,4 +1,5 @@
 mongodb+srv://<username>:<password>@uff.r1smf.mongodb.net/<dbname>?retryWrites=true&w=majority
+mongodb+srv://Test:qwertzui@uff.r1smf.mongodb.net/Test?retryWrites=true&w=majority
 
 
 https://mongodbnetbrowser.herokuapp.com/?u=Test&p=qwertzui&a=uff.r1smf.mongodb.net&n=Test&c=Students

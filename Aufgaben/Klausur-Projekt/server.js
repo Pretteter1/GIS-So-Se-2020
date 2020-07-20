@@ -1,43 +1,47 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Klausur = void 0;
+exports.Aufgabe11 = void 0;
 const Http = require("http");
 const Url = require("url");
-var Klausur;
-(function (Klausur) {
+const Mongo = require("mongodb");
+var Aufgabe11;
+(function (Aufgabe11) {
+    let datenUrl;
+    datenUrl = "mongodb+srv://Test:qwertzui@uff.r1smf.mongodb.net/Test?retryWrites=true&w=majority";
+    verbindungDatenbank(datenUrl);
+    let daten;
     console.log("Starting server");
-    //Port wird als Variable abgespeichert
     let port = Number(process.env.PORT);
-    //Wenn kein Port dann port=8100
     if (!port)
         port = 8100;
-    //Server wird als Variable abgespeichert
     let server = Http.createServer();
-    //Für Anfrage und zuhören werden Listener gebaut
     server.addListener("request", handleRequest);
     server.addListener("listening", handleListen);
-    //Server schaut nach dem Port
     server.listen(port);
-    //Beim Vorgang Listening wird das auch in der Console ausgegeben
+    async function verbindungDatenbank(_url) {
+        let options = { useNewUrlParser: true, useUnifiedTopology: true };
+        let mongoClient = new Mongo.MongoClient(_url, options);
+        await mongoClient.connect();
+        daten = mongoClient.db("Test").collection("Students");
+    }
     function handleListen() {
         console.log("Listening");
     }
-    function handleRequest(_request, _response) {
+    async function handleRequest(_request, _response) {
+        console.log("I hear voices!");
         _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let url = Url.parse(_request.url, true);
-            if (url.pathname == "/html") {
-                for (let key in url.query) {
-                    _response.write(key + ": " + url.query[key] + "<br/>");
-                }
+            let pathname = url.pathname;
+            if (pathname == "/hinzufuegen") {
+                daten.insertOne(url.query);
             }
-            else if (url.pathname == "/json") {
-                let jsonString = JSON.stringify(url.query);
-                _response.write(jsonString);
+            else if (pathname == "/anzeigen") {
+                _response.write(JSON.stringify(await daten.find().toArray()));
             }
         }
         _response.end();
     }
-})(Klausur = exports.Klausur || (exports.Klausur = {}));
+})(Aufgabe11 = exports.Aufgabe11 || (exports.Aufgabe11 = {}));
 //# sourceMappingURL=server.js.map
