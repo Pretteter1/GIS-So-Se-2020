@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Aufgabe11 = void 0;
+exports.Klausur = void 0;
 const Http = require("http");
 const Url = require("url");
 const Mongo = require("mongodb");
-var Aufgabe11;
-(function (Aufgabe11) {
+var Klausur;
+(function (Klausur) {
     let datenUrl;
     datenUrl = "mongodb+srv://Test:qwertzui@uff.r1smf.mongodb.net/Test?retryWrites=true&w=majority";
     verbindungDatenbank(datenUrl);
@@ -43,5 +43,5 @@ var Aufgabe11;
         }
         _response.end();
     }
-})(Aufgabe11 = exports.Aufgabe11 || (exports.Aufgabe11 = {}));
+})(Klausur = exports.Klausur || (exports.Klausur = {}));
 //# sourceMappingURL=server.js.map

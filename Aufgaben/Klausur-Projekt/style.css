@@ -160,6 +160,10 @@ div {
   height: 50px;
 }
 
+#bestelldaten{
+  display: none;
+}
+
 @media screen and (max-width: 1023px) {
   #eis {
     max-width: 60px;

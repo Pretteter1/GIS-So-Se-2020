@@ -1,18 +1,20 @@
 "use strict";
 var Klausur;
 (function (Klausur) {
-    let buttonHinzufügen = document.getElementById("datenHinzufügen");
-    buttonHinzufügen.addEventListener("click", handleHinzufügen);
+    /* let buttonHinzufügen: HTMLButtonElement = (<HTMLButtonElement>document.getElementById("datenHinzufügen"));
+    buttonHinzufügen.addEventListener("click", handleHinzufügen); */
     let buttonAnzeigen = document.getElementById("datenAnzeigen");
     buttonAnzeigen.addEventListener("click", handleAnzeigen);
-    async function handleHinzufügen() {
-        let form = new FormData(document.forms[0]);
-        let query = new URLSearchParams(form);
-        let url = "https://pretteter.herokuapp.com";
-        url += "/hinzufuegen" + "?" + query.toString();
-        await fetch(url);
-        console.log("test");
-    }
+    /* async function handleHinzufügen(): Promise<void> {
+      let form: FormData = new FormData(document.forms[0]);
+      let query: URLSearchParams = new URLSearchParams(<any>form);
+      
+      let url: string = "https://pretteter.herokuapp.com";
+      url += "/hinzufuegen" + "?" + query.toString();
+      await fetch(url);
+  
+      console.log("test");
+    } */
     async function handleAnzeigen() {
         let formData = new FormData(document.forms[0]);
         let query = new URLSearchParams(formData);

@@ -5,7 +5,7 @@ import * as Url from "url";
 import * as Mongo from "mongodb";
 
 
-export namespace Aufgabe11 {
+export namespace Klausur {
   
   let datenUrl: string;
   datenUrl = "mongodb+srv://Test:qwertzui@uff.r1smf.mongodb.net/Test?retryWrites=true&w=majority";

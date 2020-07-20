@@ -158,7 +158,7 @@ var Klausur;
             entfernen.id = "bestellung";
             entfernen.innerHTML = "" + "<form action=https://pretteter.herokuapp.com method=GET>" + "<h2>" + "Bestellung" + "</h2>"
                 + "<hr>" +
-                preisgesammt + "€" +
+                "<p name= Preis>" + preisgesammt + "€" + "</p>" +
                 "<hr>" +
                 "<input class=Formular_Daten type=text name=Vorname id=Vname  placeholder=Vorname> <br>" +
                 "<input class=Formular_Daten type=text name=Nachname id=Nname  placeholder=Nachname>" +
@@ -175,15 +175,38 @@ var Klausur;
                 "<button class=senden id=senden > Neuer Versuch</button >" +
                 "<br>" +
                 "<br>" +
+                "<p id = bestelldaten>" +
+                "<input type=text name=Preis id=bpreis > <br>" +
+                "<input type=text name=Gefäß id=bgefäß > <br>" +
+                "</p>" +
                 "</form>";
             document.getElementById("senden")?.addEventListener("click", reload);
+            f_inputsGenerieren();
             let btnJSON = document.getElementById("server");
-            btnJSON.addEventListener("click", JSON);
+            btnJSON.addEventListener("click", senden);
             btnJSON.addEventListener("click", danke);
             shop.removeEventListener("click", f_shop);
             ware.removeEventListener("click", f_topping);
             verkäufer.removeEventListener("click", f_bestellung);
         }
+    }
+    function f_inputsGenerieren() {
+        let gesammtpreis = document.getElementById("bpreis");
+        gesammtpreis.value = preisgesammt.toString();
+        let gefäß = document.getElementById("bgefäß");
+        gefäß.value = localStorage.getItem("W_oder_B");
+        for (let i = 1; i <= maxkugeln; i++) {
+            let name = document.createElement("input");
+            name.id = "name" + i;
+            name.setAttribute("name", i + "Kugel");
+            document.getElementById("bestelldaten")?.appendChild(name);
+            name.value = localStorage.getItem("artikel_name" + (i - 1));
+        }
+        let name = document.createElement("input");
+        name.id = "topping";
+        name.setAttribute("name", "Topping");
+        document.getElementById("bestelldaten")?.appendChild(name);
+        name.value = localStorage.getItem("artikel_name" + maxkugeln);
     }
     function f_zuviele() {
         let entfernen = document.querySelector("#test");
@@ -244,17 +267,13 @@ var Klausur;
         location.reload(true);
         localStorage.clear();
     }
-    async function JSON() {
-        let formData;
-        formData = new FormData(document.forms[0]);
-        let query = new URLSearchParams(formData);
+    async function senden() {
+        let form = new FormData(document.forms[0]);
+        let query = new URLSearchParams(form);
         let url = "https://pretteter.herokuapp.com";
-        //let url: string = "http://localhost:8100";
-        url = url + "/json?" + query.toString();
-        console.log(url);
-        let antwort = await fetch(url);
-        let json = await antwort.json();
-        console.log(json);
+        url += "/hinzufuegen" + "?" + query.toString();
+        await fetch(url);
+        console.log("test");
     }
     function danke() {
         let entfernen = document.querySelector("#bestellung");

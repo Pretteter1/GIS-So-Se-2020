@@ -1,13 +1,13 @@
 namespace Klausur {
    
-        let buttonHinzufügen: HTMLButtonElement = (<HTMLButtonElement>document.getElementById("datenHinzufügen"));
-        buttonHinzufügen.addEventListener("click", handleHinzufügen);
+        /* let buttonHinzufügen: HTMLButtonElement = (<HTMLButtonElement>document.getElementById("datenHinzufügen"));
+        buttonHinzufügen.addEventListener("click", handleHinzufügen); */
       
         let buttonAnzeigen: HTMLButtonElement = (<HTMLButtonElement>document.getElementById("datenAnzeigen"));
         buttonAnzeigen.addEventListener("click", handleAnzeigen);
       
       
-        async function handleHinzufügen(): Promise<void> {
+        /* async function handleHinzufügen(): Promise<void> {
           let form: FormData = new FormData(document.forms[0]);
           let query: URLSearchParams = new URLSearchParams(<any>form);
           
@@ -16,7 +16,7 @@ namespace Klausur {
           await fetch(url);
       
           console.log("test");
-        }
+        } */
       
         async function handleAnzeigen(): Promise<void> {
           let formData: FormData = new FormData(document.forms[0]);

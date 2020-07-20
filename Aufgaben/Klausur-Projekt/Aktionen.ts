@@ -167,6 +167,7 @@ namespace Klausur {
 
 
 
+
     home.addEventListener("click", f_home);
     shop.addEventListener("click", f_shop);
     ware.addEventListener("click", f_topping);
@@ -266,7 +267,7 @@ namespace Klausur {
 
             entfernen.innerHTML = "" + "<form action=https://pretteter.herokuapp.com method=GET>" + "<h2>" + "Bestellung" + "</h2>"
                 + "<hr>" +
-                preisgesammt + "€" +
+                "<p name= Preis>" + preisgesammt + "€" + "</p>" +
                 "<hr>" +
                 "<input class=Formular_Daten type=text name=Vorname id=Vname  placeholder=Vorname> <br>" +
                 "<input class=Formular_Daten type=text name=Nachname id=Nname  placeholder=Nachname>" +
@@ -283,23 +284,73 @@ namespace Klausur {
                 "<br>" +
                 "<button class=senden id=senden > Neuer Versuch</button >" +
 
+
                 "<br>" +
                 "<br>" +
+                "<p id = bestelldaten>" +
+                "<input type=text name=Preis id=bpreis > <br>" +
+                "<input type=text name=Gefäß id=bgefäß > <br>" +
+
+
+
+
+
+                "</p>" +
                 "</form>"
 
                 ;
 
 
             document.getElementById("senden")?.addEventListener("click", reload);
+
+            f_inputsGenerieren();
+
+
+
+
+
             let btnJSON: HTMLButtonElement = <HTMLButtonElement>document.getElementById("server");
-            btnJSON.addEventListener("click", JSON);
+            btnJSON.addEventListener("click", senden);
             btnJSON.addEventListener("click", danke);
+
+
+
 
 
             shop.removeEventListener("click", f_shop);
             ware.removeEventListener("click", f_topping);
             verkäufer.removeEventListener("click", f_bestellung);
         }
+
+    }
+
+    function f_inputsGenerieren(): void {
+
+        let gesammtpreis: HTMLButtonElement = <HTMLButtonElement>document.getElementById("bpreis");
+        gesammtpreis.value = preisgesammt.toString();
+        let gefäß: HTMLButtonElement = <HTMLButtonElement>document.getElementById("bgefäß");
+        gefäß.value = localStorage.getItem("W_oder_B")!;
+
+        for (let i: number = 1; i <= maxkugeln; i++) {
+
+            let name: HTMLInputElement = document.createElement("input");
+            name.id = "name" + i;
+            name.setAttribute("name", i + "Kugel");
+            document.getElementById("bestelldaten")?.appendChild(name);
+            name.value = localStorage.getItem("artikel_name" + (i - 1))!;
+
+           
+
+        }
+        
+        let name: HTMLInputElement = document.createElement("input");
+        name.id = "topping";
+        name.setAttribute("name", "Topping");
+        document.getElementById("bestelldaten")?.appendChild(name);
+        name.value = localStorage.getItem("artikel_name" + maxkugeln)!;
+
+
+
 
     }
 
@@ -404,19 +455,16 @@ namespace Klausur {
 
 
 
-    async function JSON(): Promise<void> {
+    async function senden(): Promise<void> {
+        let form: FormData = new FormData(document.forms[0]);
+        let query: URLSearchParams = new URLSearchParams(<any>form);
 
-        let formData: FormData;
-        formData = new FormData(document.forms[0]);
-        let query: URLSearchParams = new URLSearchParams(<any>formData);
         let url: string = "https://pretteter.herokuapp.com";
-        //let url: string = "http://localhost:8100";
-        url = url + "/json?" + query.toString();
-        console.log(url);
+        url += "/hinzufuegen" + "?" + query.toString();
+        await fetch(url);
 
-        let antwort: Response = await fetch(url);
-        let json: string = await antwort.json();
-        console.log(json);
+        console.log("test");
+
     }
 
     function danke(): void {
@@ -428,6 +476,7 @@ namespace Klausur {
             "<br>" +
             "<br>" +
             "<button class=senden id=senden > Neue Bestellung?</button >"
+
             ;
 
 
