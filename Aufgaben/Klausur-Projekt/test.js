@@ -78,12 +78,23 @@ var Klausur;
         document.getElementById("divNr" + x)?.appendChild(adresse);
         let löschen = document.createElement("button");
         löschen.innerHTML = "löschen";
+        löschen.id = "einsLöschen" + x;
         löschen.setAttribute("class", "buttons");
         document.getElementById("divNr" + x)?.appendChild(löschen);
         let verschicken = document.createElement("button");
         verschicken.innerHTML = "verschicken";
         verschicken.setAttribute("class", "buttons");
         document.getElementById("divNr" + x)?.appendChild(verschicken);
+        let id = produkte[x]._id;
+        document.getElementById("einsLöschen" + x)?.addEventListener("click", einsLöschen);
+        async function einsLöschen() {
+            let form = new FormData(document.forms[0]);
+            let query = new URLSearchParams(form);
+            let url = "https://pretteter.herokuapp.com";
+            // let url: string = "http://localhost:8100/";
+            url += "/einsLoeschen" + "?" + "_id=" + id;
+            await fetch(url);
+        }
     }
     Klausur.f_divs_generierenVerkäufer = f_divs_generierenVerkäufer;
     async function allesLöschen() {

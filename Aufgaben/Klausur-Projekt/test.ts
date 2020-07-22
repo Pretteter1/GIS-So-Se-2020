@@ -23,7 +23,7 @@ namespace Klausur {
     let ausgabe: string = await antwort.text();
 
     produkte = JSON.parse(ausgabe);
-   
+
     neuAufbauen();
     produkteGenerieren();
 
@@ -121,6 +121,7 @@ namespace Klausur {
 
     let löschen: HTMLButtonElement = document.createElement("button");
     löschen.innerHTML = "löschen";
+    löschen.id = "einsLöschen" + x;
     löschen.setAttribute("class", "buttons");
     document.getElementById("divNr" + x)?.appendChild(löschen);
 
@@ -129,6 +130,23 @@ namespace Klausur {
     verschicken.setAttribute("class", "buttons");
     document.getElementById("divNr" + x)?.appendChild(verschicken);
 
+    let id = produkte[x]._id;
+
+    document.getElementById("einsLöschen" + x)?.addEventListener("click", einsLöschen);
+
+    async function einsLöschen(): Promise<void> {
+
+      let form: FormData = new FormData(document.forms[0]);
+      let query: URLSearchParams = new URLSearchParams(<any>form);
+
+      let url: string = "https://pretteter.herokuapp.com";
+      // let url: string = "http://localhost:8100/";
+      url += "/einsLoeschen" + "?" + "_id=" + id;
+      await fetch(url);
+
+
+
+    }
 
   }
   async function allesLöschen(): Promise<void> {
