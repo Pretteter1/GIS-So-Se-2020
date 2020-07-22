@@ -14,8 +14,8 @@ namespace Klausur {
     let formData: FormData = new FormData(document.forms[0]);
     let query: URLSearchParams = new URLSearchParams(<any>formData);
 
-    //let url: string = "https://pretteter.herokuapp.com";
-    let url: string = "http://localhost:8100/";
+    let url: string = "https://pretteter.herokuapp.com";
+    // let url: string = "http://localhost:8100/";
 
     url += "/anzeigen" + "?" + query.toString();
 
@@ -135,8 +135,8 @@ namespace Klausur {
     let form: FormData = new FormData(document.forms[0]);
     let query: URLSearchParams = new URLSearchParams(<any>form);
 
-    //let url: string = "https://pretteter.herokuapp.com";
-    let url: string = "http://localhost:8100/";
+    let url: string = "https://pretteter.herokuapp.com";
+    // let url: string = "http://localhost:8100/";
     url += "/allesLöschen" + "?" + query.toString();
     await fetch(url);
 

@@ -9,8 +9,8 @@ var Klausur;
     async function handleAnzeigen() {
         let formData = new FormData(document.forms[0]);
         let query = new URLSearchParams(formData);
-        //let url: string = "https://pretteter.herokuapp.com";
-        let url = "http://localhost:8100/";
+        let url = "https://pretteter.herokuapp.com";
+        // let url: string = "http://localhost:8100/";
         url += "/anzeigen" + "?" + query.toString();
         let antwort = await fetch(url, { method: "get" });
         let ausgabe = await antwort.text();
@@ -89,8 +89,8 @@ var Klausur;
     async function allesLöschen() {
         let form = new FormData(document.forms[0]);
         let query = new URLSearchParams(form);
-        //let url: string = "https://pretteter.herokuapp.com";
-        let url = "http://localhost:8100/";
+        let url = "https://pretteter.herokuapp.com";
+        // let url: string = "http://localhost:8100/";
         url += "/allesLöschen" + "?" + query.toString();
         await fetch(url);
         console.log("test");
