@@ -61,10 +61,24 @@ export namespace Klausur {
 
         daten.insertOne(url.query);
       }
+
+      else if (pathname == "/einsLoeschen") {
+
+        for (let x in url.query) {
+          let wert: string = <string>url.query[x];
+          let objekt: Mongo.ObjectID = new Mongo.ObjectID(wert);
+
+          _response.write(await JSON.stringify(await daten.deleteOne({ "_id": objekt })));
+        }
+
+      }
     }
+
 
     _response.end();
   }
+
+
 }
 
 

@@ -44,6 +44,13 @@ var Klausur;
             else if (pathname == "/hinzufuegen") {
                 daten.insertOne(url.query);
             }
+            else if (pathname == "/einsLoeschen") {
+                for (let x in url.query) {
+                    let wert = url.query[x];
+                    let objekt = new Mongo.ObjectID(wert);
+                    _response.write(await JSON.stringify(await daten.deleteOne({ "_id": objekt })));
+                }
+            }
         }
         _response.end();
     }
