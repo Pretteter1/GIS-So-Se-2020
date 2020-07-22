@@ -160,8 +160,40 @@ div {
   height: 50px;
 }
 
-#bestelldaten{
+#bestelldaten {
   display: none;
+}
+
+#serverAntwort {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  font-size: 20px;
+  margin-left: 0%;
+}
+
+#serverAntwort div {
+  position: relative;
+  width: 250px;
+  height: 350px;
+  margin: 10px;
+  margin-bottom: 25px;
+  text-align: center;
+  border-radius: 2px;
+  border-color: rgb(102, 199, 255);
+  border-style: solid;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+#serverAntwort div p {
+  position: relative;
+  margin-bottom: -20px;
+}
+.buttons{
+  position: relative;
+  margin-top: 100px;
 }
 
 @media screen and (max-width: 1023px) {
@@ -204,7 +236,6 @@ div {
 }
 
 @media screen and (max-width: 600px) {
-  
   #Waffel {
     max-width: 100px;
   }
@@ -217,16 +248,13 @@ div {
     margin-top: -10px;
     max-height: 300px;
     margin-bottom: 5%;
-    
   }
   #zusatz div img {
     max-height: 150px;
     max-width: 250px;
     margin-top: 15px;
   }
-
-  #test{
-
+  #test {
     margin-left: 10px;
   }
   .senden {

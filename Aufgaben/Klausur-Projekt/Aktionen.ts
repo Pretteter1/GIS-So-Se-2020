@@ -7,6 +7,8 @@ namespace Klausur {
     localStorage.setItem("W_oder_B", ("Waffel"));
     localStorage.setItem("anzahlArtikel", (0).toString());
 
+    console.log(produkte);
+
 
     let home: HTMLAnchorElement = document.createElement("a");
     let shop: HTMLAnchorElement = document.createElement("a");
@@ -335,14 +337,14 @@ namespace Klausur {
 
             let name: HTMLInputElement = document.createElement("input");
             name.id = "name" + i;
-            name.setAttribute("name", i + "Kugel");
+            name.setAttribute("name", "Kugel" + i);
             document.getElementById("bestelldaten")?.appendChild(name);
             name.value = localStorage.getItem("artikel_name" + (i - 1))!;
 
-           
+
 
         }
-        
+
         let name: HTMLInputElement = document.createElement("input");
         name.id = "topping";
         name.setAttribute("name", "Topping");

@@ -6,6 +6,7 @@ var Klausur;
     let maxkugeln = 3;
     localStorage.setItem("W_oder_B", ("Waffel"));
     localStorage.setItem("anzahlArtikel", (0).toString());
+    console.log(Klausur.produkte);
     let home = document.createElement("a");
     let shop = document.createElement("a");
     let ware = document.createElement("a");
@@ -198,7 +199,7 @@ var Klausur;
         for (let i = 1; i <= maxkugeln; i++) {
             let name = document.createElement("input");
             name.id = "name" + i;
-            name.setAttribute("name", i + "Kugel");
+            name.setAttribute("name", "Kugel" + i);
             document.getElementById("bestelldaten")?.appendChild(name);
             name.value = localStorage.getItem("artikel_name" + (i - 1));
         }

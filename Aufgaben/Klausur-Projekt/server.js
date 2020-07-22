@@ -34,8 +34,8 @@ var Klausur;
         if (_request.url) {
             let url = Url.parse(_request.url, true);
             let pathname = url.pathname;
-            if (pathname == "/hinzufuegen") {
-                daten.insertOne(url.query);
+            if (pathname == "/allesLöschen") {
+                daten.drop();
             }
             else if (pathname == "/anzeigen") {
                 _response.write(JSON.stringify(await daten.find().toArray()));

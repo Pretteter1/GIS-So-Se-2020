@@ -49,9 +49,9 @@ export namespace Klausur {
       let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
       let pathname: String | null = url.pathname;
 
-      if (pathname == "/hinzufuegen") {
+      if (pathname == "/allesLöschen") {
 
-        daten.insertOne(url.query);
+        daten.drop();
 
       } else if (pathname == "/anzeigen") {
         _response.write(JSON.stringify(await daten.find().toArray()));
