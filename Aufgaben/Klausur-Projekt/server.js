@@ -34,7 +34,7 @@ var Klausur;
         if (_request.url) {
             let url = Url.parse(_request.url, true);
             let pathname = url.pathname;
-            if (pathname == "/allesLöschen") {
+            if (pathname == "/allesLoeschen") {
                 console.log("test");
                 await daten.drop();
             }

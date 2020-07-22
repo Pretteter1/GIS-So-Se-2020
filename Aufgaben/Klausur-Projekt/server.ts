@@ -49,7 +49,7 @@ export namespace Klausur {
       let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
       let pathname: String | null = url.pathname;
 
-      if (pathname == "/allesLöschen") {
+      if (pathname == "/allesLoeschen") {
         console.log("test");
         await daten.drop();
         
