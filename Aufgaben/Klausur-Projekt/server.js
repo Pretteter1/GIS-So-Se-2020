@@ -41,6 +41,9 @@ var Klausur;
             else if (pathname == "/anzeigen") {
                 _response.write(JSON.stringify(await daten.find().toArray()));
             }
+            else if (pathname == "/hinzufuegen") {
+                daten.insertOne(url.query);
+            }
         }
         _response.end();
     }

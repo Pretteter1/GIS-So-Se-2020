@@ -91,7 +91,7 @@ var Klausur;
         let query = new URLSearchParams(form);
         let url = "https://pretteter.herokuapp.com";
         // let url: string = "http://localhost:8100/";
-        url += "/allesLöschen" + "?" + query.toString();
+        url += "/allesLoeschen" + "?" + query.toString();
         await fetch(url);
         console.log("test");
     }

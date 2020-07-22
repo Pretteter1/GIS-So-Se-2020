@@ -137,7 +137,7 @@ namespace Klausur {
 
     let url: string = "https://pretteter.herokuapp.com";
     // let url: string = "http://localhost:8100/";
-    url += "/allesLöschen" + "?" + query.toString();
+    url += "/allesLoeschen" + "?" + query.toString();
     await fetch(url);
 
     console.log("test");

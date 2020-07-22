@@ -6,11 +6,11 @@ import * as Mongo from "mongodb";
 
 
 export namespace Klausur {
-  
+
   let datenUrl: string;
   datenUrl = "mongodb+srv://Test:qwertzui@uff.r1smf.mongodb.net/Test?retryWrites=true&w=majority";
   verbindungDatenbank(datenUrl);
- 
+
   let daten: Mongo.Collection;
 
   console.log("Starting server");
@@ -52,10 +52,14 @@ export namespace Klausur {
       if (pathname == "/allesLoeschen") {
         console.log("test");
         await daten.drop();
-        
+
 
       } else if (pathname == "/anzeigen") {
         _response.write(JSON.stringify(await daten.find().toArray()));
+      }
+      else if (pathname == "/hinzufuegen") {
+
+        daten.insertOne(url.query);
       }
     }
 
