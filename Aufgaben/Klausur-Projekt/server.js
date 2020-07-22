@@ -51,6 +51,13 @@ var Klausur;
                     _response.write(await JSON.stringify(await daten.deleteOne({ "_id": objekt })));
                 }
             }
+            else if (pathname == "/update") {
+                for (let x in url.query) {
+                    let eingabe = url.query[x];
+                    let objekt = new Mongo.ObjectID(eingabe);
+                    daten.updateOne({ "_id": objekt }, { "Adresse": "verschickt" });
+                }
+            }
         }
         _response.end();
     }

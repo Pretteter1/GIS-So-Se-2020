@@ -72,6 +72,16 @@ export namespace Klausur {
         }
 
       }
+      else if (pathname == "/update") {
+
+        for (let x in url.query) {
+          let eingabe: string = <string>url.query[x];
+          let objekt: Mongo.ObjectID = new Mongo.ObjectID(eingabe);
+
+          daten.updateOne({ "_id": objekt }, { "Adresse": "verschickt" });
+        }
+
+      }
     }
 
 
