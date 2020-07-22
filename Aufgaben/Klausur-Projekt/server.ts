@@ -51,7 +51,7 @@ export namespace Klausur {
 
       if (pathname == "/allesLöschen") {
 
-        daten.drop();
+        daten.insertOne(url.query);
 
       } else if (pathname == "/anzeigen") {
         _response.write(JSON.stringify(await daten.find().toArray()));

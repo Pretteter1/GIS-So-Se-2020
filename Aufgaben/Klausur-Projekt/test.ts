@@ -4,7 +4,7 @@ namespace Klausur {
   buttonHinzufügen.addEventListener("click", handleHinzufügen); */
 
   let buttonAnzeigen: HTMLButtonElement = (<HTMLButtonElement>document.getElementById("datenAnzeigen"));
-  
+
 
   buttonAnzeigen.addEventListener("click", handleAnzeigen);
 
@@ -14,21 +14,23 @@ namespace Klausur {
     let formData: FormData = new FormData(document.forms[0]);
     let query: URLSearchParams = new URLSearchParams(<any>formData);
 
-    let url: string = "https://pretteter.herokuapp.com";
+    //let url: string = "https://pretteter.herokuapp.com";
+    let url: string = "http://localhost:8100/";
+
     url += "/anzeigen" + "?" + query.toString();
 
     let antwort: Response = await fetch(url, { method: "get" });
     let ausgabe: string = await antwort.text();
 
     produkte = JSON.parse(ausgabe);
-
+   
     neuAufbauen();
     produkteGenerieren();
 
 
     //(<HTMLElement>document.getElementById("serverAntwort")).innerHTML = ausgabe;
 
-    console.log(produkte);
+
 
 
   }
@@ -133,7 +135,8 @@ namespace Klausur {
     let form: FormData = new FormData(document.forms[0]);
     let query: URLSearchParams = new URLSearchParams(<any>form);
 
-    let url: string = "https://pretteter.herokuapp.com";
+    //let url: string = "https://pretteter.herokuapp.com";
+    let url: string = "http://localhost:8100/";
     url += "/allesLöschen" + "?" + query.toString();
     await fetch(url);
 
