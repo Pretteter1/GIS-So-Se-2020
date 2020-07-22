@@ -50,8 +50,9 @@ export namespace Klausur {
       let pathname: String | null = url.pathname;
 
       if (pathname == "/allesLöschen") {
-
+        console.log("test");
         await daten.drop();
+        
 
       } else if (pathname == "/anzeigen") {
         _response.write(JSON.stringify(await daten.find().toArray()));
