@@ -127,12 +127,16 @@ namespace Klausur {
 
     let verschicken: HTMLButtonElement = document.createElement("button");
     verschicken.innerHTML = "verschicken";
+    verschicken.id = "update" + x;
     verschicken.setAttribute("class", "buttons");
     document.getElementById("divNr" + x)?.appendChild(verschicken);
 
-    let id = produkte[x]._id;
+    let id: string = produkte[x]._id;
 
     document.getElementById("einsLöschen" + x)?.addEventListener("click", einsLöschen);
+    document.getElementById("update" + x)?.addEventListener("click", update);
+
+
 
     async function einsLöschen(): Promise<void> {
 
@@ -144,9 +148,24 @@ namespace Klausur {
       url += "/einsLoeschen" + "?" + "_id=" + id;
       await fetch(url);
 
+    }
+
+
+    async function update(): Promise<void> {
+
+      let form: FormData = new FormData(document.forms[0]);
+      let query: URLSearchParams = new URLSearchParams(<any>form);
+
+      let url: string = "https://pretteter.herokuapp.com";
+      // let url: string = "http://localhost:8100/";
+      url += "/update" + "?" + "_id=" + id;
+      await fetch(url);
+
 
 
     }
+
+
 
   }
   async function allesLöschen(): Promise<void> {
@@ -160,6 +179,8 @@ namespace Klausur {
 
     console.log("test");
   }
+
+
 
 
 }

@@ -78,7 +78,7 @@ export namespace Klausur {
           let eingabe: string = <string>url.query[x];
           let objekt: Mongo.ObjectID = new Mongo.ObjectID(eingabe);
 
-          daten.updateOne({ "_id": objekt }, { "Adresse": "verschickt" });
+          daten.updateOne({ "_id": objekt }, { $set: { "Adresse": "verschickt" } });
         }
 
       }

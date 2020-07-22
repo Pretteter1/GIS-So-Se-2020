@@ -55,7 +55,7 @@ var Klausur;
                 for (let x in url.query) {
                     let eingabe = url.query[x];
                     let objekt = new Mongo.ObjectID(eingabe);
-                    daten.updateOne({ "_id": objekt }, { "Adresse": "verschickt" });
+                    daten.updateOne({ "_id": objekt }, { $set: { "Adresse": "verschickt" } });
                 }
             }
         }

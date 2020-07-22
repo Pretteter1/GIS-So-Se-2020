@@ -83,16 +83,26 @@ var Klausur;
         document.getElementById("divNr" + x)?.appendChild(löschen);
         let verschicken = document.createElement("button");
         verschicken.innerHTML = "verschicken";
+        verschicken.id = "update" + x;
         verschicken.setAttribute("class", "buttons");
         document.getElementById("divNr" + x)?.appendChild(verschicken);
         let id = produkte[x]._id;
         document.getElementById("einsLöschen" + x)?.addEventListener("click", einsLöschen);
+        document.getElementById("update" + x)?.addEventListener("click", update);
         async function einsLöschen() {
             let form = new FormData(document.forms[0]);
             let query = new URLSearchParams(form);
             let url = "https://pretteter.herokuapp.com";
             // let url: string = "http://localhost:8100/";
             url += "/einsLoeschen" + "?" + "_id=" + id;
+            await fetch(url);
+        }
+        async function update() {
+            let form = new FormData(document.forms[0]);
+            let query = new URLSearchParams(form);
+            let url = "https://pretteter.herokuapp.com";
+            // let url: string = "http://localhost:8100/";
+            url += "/update" + "?" + "_id=" + id;
             await fetch(url);
         }
     }
