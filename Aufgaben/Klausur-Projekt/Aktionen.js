@@ -1,6 +1,8 @@
 "use strict";
 var Klausur;
 (function (Klausur) {
+    if (performance.navigation.type == performance.navigation.TYPE_RELOAD)
+        localStorage.clear();
     let preisgesammt = 0;
     let nummerkugeln = 0;
     let maxkugeln = 3;
@@ -173,14 +175,13 @@ var Klausur;
                 "<button class=senden id=server > Bestellung abschicken</button >" +
                 "<br>" +
                 "<br>" +
-                "<button class=senden id=senden > Neuer Versuch</button >" +
                 "<br>" +
                 "<br>" +
                 "<p id = bestelldaten>" +
                 "<input type=text name=Preis id=bpreis > <br>" +
                 "<input type=text name=Gefäß id=bgefäß > <br>" +
-                "</p>" +
-                "</form>";
+                "</form>" +
+                "<button class=senden id=senden > Neuer Versuch</button >";
             document.getElementById("senden")?.addEventListener("click", reload);
             f_inputsGenerieren();
             let btnJSON = document.getElementById("server");

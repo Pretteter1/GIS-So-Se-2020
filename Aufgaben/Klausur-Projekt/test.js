@@ -5,6 +5,7 @@ var Klausur;
     buttonHinzufügen.addEventListener("click", handleHinzufügen); */
     let buttonAnzeigen = document.getElementById("datenAnzeigen");
     buttonAnzeigen.addEventListener("click", handleAnzeigen);
+    buttonAnzeigen.addEventListener("click", neuAufbauen);
     let produkte;
     async function handleAnzeigen() {
         let formData = new FormData(document.forms[0]);
@@ -15,7 +16,7 @@ var Klausur;
         let antwort = await fetch(url, { method: "get" });
         let ausgabe = await antwort.text();
         produkte = JSON.parse(ausgabe);
-        neuAufbauen();
+        //neuAufbauen();
         produkteGenerieren();
         //(<HTMLElement>document.getElementById("serverAntwort")).innerHTML = ausgabe;
     }
@@ -33,13 +34,21 @@ var Klausur;
             "<form>" +
             "<button type=button id=datenLöschen>Daten löschen</button>" +
             "<br>" +
+            "<button type=button id=datenAktualisieren>Daten aktualisieren</button>" +
+            "<br>" +
             "</form>" +
-            "<h3>Datenbank:</h3>" +
+            "<h3>Alle Bestellungen</h3>" +
             "<br>" +
             "<div id=serverAntwort></div>";
         document.getElementById("datenLöschen")?.addEventListener("click", allesLöschen);
+        document.getElementById("datenAktualisieren")?.addEventListener("click", reloadVerkäufer);
     }
     Klausur.neuAufbauen = neuAufbauen;
+    function reloadVerkäufer() {
+        let entfernen = document.querySelector("#serverAntwort");
+        entfernen.innerHTML = "";
+        handleAnzeigen();
+    }
     function f_divs_generierenVerkäufer(x) {
         console.log(produkte[x].Adresse);
         console.log(produkte[x].Preis);
@@ -81,29 +90,29 @@ var Klausur;
         löschen.id = "einsLöschen" + x;
         löschen.setAttribute("class", "buttons");
         document.getElementById("divNr" + x)?.appendChild(löschen);
-        let verschicken = document.createElement("button");
-        verschicken.innerHTML = "verschicken";
-        verschicken.id = "update" + x;
-        verschicken.setAttribute("class", "buttons");
-        document.getElementById("divNr" + x)?.appendChild(verschicken);
+        if (produkte[x].Adresse != "verschickt") {
+            let verschicken = document.createElement("button");
+            verschicken.innerHTML = "verschicken";
+            verschicken.id = "update" + x;
+            verschicken.setAttribute("class", "buttons");
+            document.getElementById("divNr" + x)?.appendChild(verschicken);
+        }
         let id = produkte[x]._id;
         document.getElementById("einsLöschen" + x)?.addEventListener("click", einsLöschen);
         document.getElementById("update" + x)?.addEventListener("click", update);
         async function einsLöschen() {
-            let form = new FormData(document.forms[0]);
-            let query = new URLSearchParams(form);
             let url = "https://pretteter.herokuapp.com";
             // let url: string = "http://localhost:8100/";
             url += "/einsLoeschen" + "?" + "_id=" + id;
             await fetch(url);
+            reloadVerkäufer();
         }
         async function update() {
-            let form = new FormData(document.forms[0]);
-            let query = new URLSearchParams(form);
             let url = "https://pretteter.herokuapp.com";
             // let url: string = "http://localhost:8100/";
             url += "/update" + "?" + "_id=" + id;
             await fetch(url);
+            reloadVerkäufer();
         }
     }
     Klausur.f_divs_generierenVerkäufer = f_divs_generierenVerkäufer;
@@ -114,7 +123,7 @@ var Klausur;
         // let url: string = "http://localhost:8100/";
         url += "/allesLoeschen" + "?" + query.toString();
         await fetch(url);
-        console.log("test");
+        reloadVerkäufer();
     }
 })(Klausur || (Klausur = {}));
 //# sourceMappingURL=test.js.map

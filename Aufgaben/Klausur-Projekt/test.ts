@@ -7,6 +7,7 @@ namespace Klausur {
 
 
   buttonAnzeigen.addEventListener("click", handleAnzeigen);
+  buttonAnzeigen.addEventListener("click", neuAufbauen);
 
   let produkte: ProdukteV[];
 
@@ -24,7 +25,7 @@ namespace Klausur {
 
     produkte = JSON.parse(ausgabe);
 
-    neuAufbauen();
+    //neuAufbauen();
     produkteGenerieren();
 
 
@@ -59,15 +60,23 @@ namespace Klausur {
       "<form>" +
       "<button type=button id=datenLöschen>Daten löschen</button>" +
       "<br>" +
+      "<button type=button id=datenAktualisieren>Daten aktualisieren</button>" +
+      "<br>" +
       "</form>" +
-      "<h3>Datenbank:</h3>" +
+      "<h3>Alle Bestellungen</h3>" +
       "<br>" +
       "<div id=serverAntwort></div>";
 
     document.getElementById("datenLöschen")?.addEventListener("click", allesLöschen);
+    document.getElementById("datenAktualisieren")?.addEventListener("click", reloadVerkäufer);
   }
 
+  function reloadVerkäufer(): void {
 
+    let entfernen: HTMLDivElement = (<HTMLDivElement>document.querySelector("#serverAntwort"));
+    entfernen.innerHTML = "";
+    handleAnzeigen();
+  }
 
   export function f_divs_generierenVerkäufer(x: number): void {
 
@@ -125,45 +134,52 @@ namespace Klausur {
     löschen.setAttribute("class", "buttons");
     document.getElementById("divNr" + x)?.appendChild(löschen);
 
-    let verschicken: HTMLButtonElement = document.createElement("button");
-    verschicken.innerHTML = "verschicken";
-    verschicken.id = "update" + x;
-    verschicken.setAttribute("class", "buttons");
-    document.getElementById("divNr" + x)?.appendChild(verschicken);
+    if (produkte[x].Adresse != "verschickt") {
+      let verschicken: HTMLButtonElement = document.createElement("button");
+      verschicken.innerHTML = "verschicken";
+      verschicken.id = "update" + x;
+      verschicken.setAttribute("class", "buttons");
+      document.getElementById("divNr" + x)?.appendChild(verschicken);
+    }
 
     let id: string = produkte[x]._id;
+
 
     document.getElementById("einsLöschen" + x)?.addEventListener("click", einsLöschen);
     document.getElementById("update" + x)?.addEventListener("click", update);
 
 
+   
 
     async function einsLöschen(): Promise<void> {
 
-      let form: FormData = new FormData(document.forms[0]);
-      let query: URLSearchParams = new URLSearchParams(<any>form);
+
 
       let url: string = "https://pretteter.herokuapp.com";
       // let url: string = "http://localhost:8100/";
       url += "/einsLoeschen" + "?" + "_id=" + id;
       await fetch(url);
+      reloadVerkäufer();
 
     }
 
-
     async function update(): Promise<void> {
 
-      let form: FormData = new FormData(document.forms[0]);
-      let query: URLSearchParams = new URLSearchParams(<any>form);
+      
 
       let url: string = "https://pretteter.herokuapp.com";
       // let url: string = "http://localhost:8100/";
       url += "/update" + "?" + "_id=" + id;
       await fetch(url);
 
+      reloadVerkäufer();
+
+
+
 
 
     }
+
 
 
 
@@ -177,7 +193,7 @@ namespace Klausur {
     url += "/allesLoeschen" + "?" + query.toString();
     await fetch(url);
 
-    console.log("test");
+    reloadVerkäufer();
   }
 
 

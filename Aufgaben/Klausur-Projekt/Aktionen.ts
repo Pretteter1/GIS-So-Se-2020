@@ -1,5 +1,12 @@
 namespace Klausur {
 
+
+
+    if (performance.navigation.type == performance.navigation.TYPE_RELOAD)
+    localStorage.clear();
+
+
+
     let preisgesammt: number = 0;
     let nummerkugeln: number = 0;
     let maxkugeln: number = 3;
@@ -284,7 +291,7 @@ namespace Klausur {
                 "<button class=senden id=server > Bestellung abschicken</button >" +
                 "<br>" +
                 "<br>" +
-                "<button class=senden id=senden > Neuer Versuch</button >" +
+
 
 
                 "<br>" +
@@ -297,8 +304,9 @@ namespace Klausur {
 
 
 
-                "</p>" +
-                "</form>"
+
+                "</form>" +
+                "<button class=senden id=senden > Neuer Versuch</button >"
 
                 ;
 
