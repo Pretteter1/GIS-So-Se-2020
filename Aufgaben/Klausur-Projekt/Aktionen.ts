@@ -473,7 +473,7 @@ namespace Klausur {
 
         if (vName.value != "" && nName.value != "" && adresse.value != "") {
 
-            if (vName.value.length < 20 && nName.value.length < 20 && adresse.value.length < 20) {
+            if (vName.value.length < 18 && nName.value.length < 18 && adresse.value.length < 18) {
                 let form: FormData = new FormData(document.forms[0]);
                 let query: URLSearchParams = new URLSearchParams(<any>form);
 

@@ -272,7 +272,7 @@ var Klausur;
         let adresse = document.getElementById("Adresse");
         console.log(vName.value.length);
         if (vName.value != "" && nName.value != "" && adresse.value != "") {
-            if (vName.value.length < 17 && nName.value.length < 17 && adresse.value.length < 17) {
+            if (vName.value.length < 18 && nName.value.length < 18 && adresse.value.length < 18) {
                 let form = new FormData(document.forms[0]);
                 let query = new URLSearchParams(form);
                 let url = "https://pretteter.herokuapp.com";
