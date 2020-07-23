@@ -195,6 +195,12 @@ div {
   position: relative;
   margin-top: 100px;
 }
+#nochEintragen{
+  
+  color: rgb(255, 208, 0);
+  font-size: 20px;
+  
+}
 
 @media screen and (max-width: 1023px) {
   #eis {

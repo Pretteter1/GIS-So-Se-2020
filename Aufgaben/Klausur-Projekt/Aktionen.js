@@ -171,22 +171,19 @@ var Klausur;
                 "<br>" +
                 "<br>" +
                 "<p id=Copie>Durch das Absenden dieser Nachricht <br> akzeptiere ich den Datenschutz</p>" +
-                "<br>" +
-                "<button class=senden id=server > Bestellung abschicken</button >" +
-                "<br>" +
-                "<br>" +
-                "<br>" +
-                "<br>" +
                 "<p id = bestelldaten>" +
                 "<input type=text name=Preis id=bpreis > <br>" +
                 "<input type=text name=Gefäß id=bgefäß > <br>" +
                 "</form>" +
+                "<button class=senden id=server > Bestellung abschicken</button >" +
+                "<br>" +
+                "<p id = nochEintragen> </p>" +
+                "<br>" +
                 "<button class=senden id=senden > Neuer Versuch</button >";
             document.getElementById("senden")?.addEventListener("click", reload);
             f_inputsGenerieren();
-            let btnJSON = document.getElementById("server");
-            btnJSON.addEventListener("click", senden);
-            btnJSON.addEventListener("click", danke);
+            let anServer = document.getElementById("server");
+            anServer.addEventListener("click", senden);
             shop.removeEventListener("click", f_shop);
             ware.removeEventListener("click", f_topping);
             verkäufer.removeEventListener("click", f_bestellung);
@@ -270,12 +267,32 @@ var Klausur;
         localStorage.clear();
     }
     async function senden() {
-        let form = new FormData(document.forms[0]);
-        let query = new URLSearchParams(form);
-        let url = "https://pretteter.herokuapp.com";
-        url += "/hinzufuegen" + "?" + query.toString();
-        await fetch(url);
-        console.log("test");
+        let vName = document.getElementById("Vname");
+        let nName = document.getElementById("Nname");
+        let adresse = document.getElementById("Adresse");
+        console.log(vName.value.length);
+        if (vName.value != "" && nName.value != "" && adresse.value != "") {
+            if (vName.value.length < 17 && nName.value.length < 17 && adresse.value.length < 17) {
+                let form = new FormData(document.forms[0]);
+                let query = new URLSearchParams(form);
+                let url = "https://pretteter.herokuapp.com";
+                url += "/hinzufuegen" + "?" + query.toString();
+                await fetch(url);
+                danke();
+            }
+            else {
+                let warnung = document.getElementById("nochEintragen");
+                warnung.innerHTML = "Es sind zu viele Zeichen";
+                let anServer = document.getElementById("server");
+                anServer.addEventListener("click", senden);
+            }
+        }
+        else {
+            let warnung = document.getElementById("nochEintragen");
+            warnung.innerHTML = "Es fehlen Daten";
+            let anServer = document.getElementById("server");
+            anServer.addEventListener("click", senden);
+        }
     }
     function danke() {
         let entfernen = document.querySelector("#bestellung");

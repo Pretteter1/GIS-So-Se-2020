@@ -3,7 +3,7 @@ namespace Klausur {
 
 
     if (performance.navigation.type == performance.navigation.TYPE_RELOAD)
-    localStorage.clear();
+        localStorage.clear();
 
 
 
@@ -286,16 +286,10 @@ namespace Klausur {
                 "<br>" +
                 "<br>" +
                 "<p id=Copie>Durch das Absenden dieser Nachricht <br> akzeptiere ich den Datenschutz</p>" +
-                "<br>" +
-
-                "<button class=senden id=server > Bestellung abschicken</button >" +
-                "<br>" +
-                "<br>" +
 
 
 
-                "<br>" +
-                "<br>" +
+
                 "<p id = bestelldaten>" +
                 "<input type=text name=Preis id=bpreis > <br>" +
                 "<input type=text name=Gefäß id=bgefäß > <br>" +
@@ -306,6 +300,12 @@ namespace Klausur {
 
 
                 "</form>" +
+                "<button class=senden id=server > Bestellung abschicken</button >" +
+                "<br>" +
+
+
+                "<p id = nochEintragen> </p>" +
+                "<br>" +
                 "<button class=senden id=senden > Neuer Versuch</button >"
 
                 ;
@@ -317,12 +317,8 @@ namespace Klausur {
 
 
 
-
-
-            let btnJSON: HTMLButtonElement = <HTMLButtonElement>document.getElementById("server");
-            btnJSON.addEventListener("click", senden);
-            btnJSON.addEventListener("click", danke);
-
+            let anServer: HTMLButtonElement = <HTMLButtonElement>document.getElementById("server");
+            anServer.addEventListener("click", senden);
 
 
 
@@ -466,14 +462,43 @@ namespace Klausur {
 
 
     async function senden(): Promise<void> {
-        let form: FormData = new FormData(document.forms[0]);
-        let query: URLSearchParams = new URLSearchParams(<any>form);
 
-        let url: string = "https://pretteter.herokuapp.com";
-        url += "/hinzufuegen" + "?" + query.toString();
-        await fetch(url);
+        let vName: HTMLButtonElement = <HTMLButtonElement>document.getElementById("Vname");
+        let nName: HTMLButtonElement = <HTMLButtonElement>document.getElementById("Nname");
+        let adresse: HTMLButtonElement = <HTMLButtonElement>document.getElementById("Adresse");
 
-        console.log("test");
+        console.log(vName.value.length);
+
+
+
+        if (vName.value != "" && nName.value != "" && adresse.value != "") {
+
+            if (vName.value.length < 17 && nName.value.length < 17 && adresse.value.length < 17) {
+                let form: FormData = new FormData(document.forms[0]);
+                let query: URLSearchParams = new URLSearchParams(<any>form);
+
+                let url: string = "https://pretteter.herokuapp.com";
+                url += "/hinzufuegen" + "?" + query.toString();
+                await fetch(url);
+                danke();
+            }
+            else {
+                let warnung: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("nochEintragen");
+                warnung.innerHTML = "Es sind zu viele Zeichen";
+                let anServer: HTMLButtonElement = <HTMLButtonElement>document.getElementById("server");
+                anServer.addEventListener("click", senden);
+            }
+        }
+
+        else {
+            let warnung: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("nochEintragen");
+            warnung.innerHTML = "Es fehlen Daten";
+            let anServer: HTMLButtonElement = <HTMLButtonElement>document.getElementById("server");
+            anServer.addEventListener("click", senden);
+
+
+
+        }
 
     }
 
