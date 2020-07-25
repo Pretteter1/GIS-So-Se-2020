@@ -79,15 +79,11 @@ namespace Aufgabe7 {
     }
     function löschenArtikel(_element: Event): void {
 
-        let target: HTMLElement = (<HTMLElement>_element.target);
-        
-
-        
+        let target: HTMLElement = (<HTMLElement>_element.target);     
         
         let preisbutton: string = target.innerHTML.substring(10);
         
         
-
         let indexButton: string = (<HTMLDivElement>(<HTMLElement>_element.currentTarget).parentElement).getAttribute("id")!;
         let nummerAusID: string = indexButton.substring(5);
         let index: number = parseFloat(nummerAusID);

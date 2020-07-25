@@ -4,10 +4,12 @@ namespace Klausur {
   buttonHinzufügen.addEventListener("click", handleHinzufügen); */
 
   let buttonAnzeigen: HTMLButtonElement = (<HTMLButtonElement>document.getElementById("datenAnzeigen"));
+  let meme: HTMLButtonElement = (<HTMLButtonElement>document.getElementById("meme"));
 
 
   buttonAnzeigen.addEventListener("click", handleAnzeigen);
   buttonAnzeigen.addEventListener("click", neuAufbauen);
+  meme.addEventListener("click", meme_erstellen);
 
   let produkte: ProdukteV[];
 
@@ -65,7 +67,8 @@ namespace Klausur {
       "</form>" +
       "<h3>Alle Bestellungen</h3>" +
       "<br>" +
-      "<div id=serverAntwort></div>";
+      "<div id=serverAntwort></div>" +
+      "<div id=meme>" + "</div>";
 
     document.getElementById("datenLöschen")?.addEventListener("click", allesLöschen);
     document.getElementById("datenAktualisieren")?.addEventListener("click", reloadVerkäufer);
@@ -73,15 +76,19 @@ namespace Klausur {
 
   function reloadVerkäufer(): void {
 
+
+
     let entfernen: HTMLDivElement = (<HTMLDivElement>document.querySelector("#serverAntwort"));
+    
     entfernen.innerHTML = "";
     handleAnzeigen();
+
+
   }
 
   export function f_divs_generierenVerkäufer(x: number): void {
 
-    console.log(produkte[x].Adresse);
-    console.log(produkte[x].Preis);
+
 
     let newDiv1: HTMLDivElement = document.createElement("div");
     newDiv1.id = "divNr" + x;
@@ -149,7 +156,7 @@ namespace Klausur {
     document.getElementById("update" + x)?.addEventListener("click", update);
 
 
-   
+
 
     async function einsLöschen(): Promise<void> {
 
@@ -165,7 +172,7 @@ namespace Klausur {
 
     async function update(): Promise<void> {
 
-      
+
 
       let url: string = "https://pretteter.herokuapp.com";
       // let url: string = "http://localhost:8100/";
@@ -196,7 +203,15 @@ namespace Klausur {
     reloadVerkäufer();
   }
 
+  function meme_erstellen(): void {
 
+    let entfernen: HTMLDivElement = (<HTMLDivElement>document.querySelector("#body"));
+    entfernen.innerHTML = "<h3>" + "<img src=images/meme.jpg alt=meme>" + 
+    "<button type=button id=zurück>doch lieber Bestellungen anschauen?</button>";
+    document.getElementById("zurück")?.addEventListener("click", neuAufbauen);
+    document.getElementById("zurück")?.addEventListener("click", reloadVerkäufer);
+    
+  }
 
 
 }

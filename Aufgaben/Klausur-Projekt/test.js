@@ -4,8 +4,10 @@ var Klausur;
     /* let buttonHinzufügen: HTMLButtonElement = (<HTMLButtonElement>document.getElementById("datenHinzufügen"));
     buttonHinzufügen.addEventListener("click", handleHinzufügen); */
     let buttonAnzeigen = document.getElementById("datenAnzeigen");
+    let meme = document.getElementById("meme");
     buttonAnzeigen.addEventListener("click", handleAnzeigen);
     buttonAnzeigen.addEventListener("click", neuAufbauen);
+    meme.addEventListener("click", meme_erstellen);
     let produkte;
     async function handleAnzeigen() {
         let formData = new FormData(document.forms[0]);
@@ -39,7 +41,8 @@ var Klausur;
             "</form>" +
             "<h3>Alle Bestellungen</h3>" +
             "<br>" +
-            "<div id=serverAntwort></div>";
+            "<div id=serverAntwort></div>" +
+            "<div id=meme>" + "</div>";
         document.getElementById("datenLöschen")?.addEventListener("click", allesLöschen);
         document.getElementById("datenAktualisieren")?.addEventListener("click", reloadVerkäufer);
     }
@@ -50,8 +53,6 @@ var Klausur;
         handleAnzeigen();
     }
     function f_divs_generierenVerkäufer(x) {
-        console.log(produkte[x].Adresse);
-        console.log(produkte[x].Preis);
         let newDiv1 = document.createElement("div");
         newDiv1.id = "divNr" + x;
         document.getElementById("serverAntwort")?.appendChild(newDiv1);
@@ -124,6 +125,13 @@ var Klausur;
         url += "/allesLoeschen" + "?" + query.toString();
         await fetch(url);
         reloadVerkäufer();
+    }
+    function meme_erstellen() {
+        let entfernen = document.querySelector("#body");
+        entfernen.innerHTML = "<h3>" + "<img src=images/meme.jpg alt=meme>" +
+            "<button type=button id=zurück>doch lieber Bestellungen anschauen?</button>";
+        document.getElementById("zurück")?.addEventListener("click", neuAufbauen);
+        document.getElementById("zurück")?.addEventListener("click", reloadVerkäufer);
     }
 })(Klausur || (Klausur = {}));
 //# sourceMappingURL=test.js.map
